@@ -32,17 +32,29 @@
     //calls the music match API and returns all of the words in an array
     function hitAPI(search){
       $.ajax({
-          method: "GET",
-          url: "http://api.musixmatch.com/ws/1.1/track.search?q_artist=" + search + "&page_size=100&apikey=45f030feddac66fcfa2f9e9f659608c4",
-          dataType: 'json'
-        })
-          .done(function(data) {
-            console.log( data );
-          // });
+        type: "GET",
+        data: {
+            apikey:"45f030feddac66fcfa2f9e9f659608c4",
+            page_size: 100,
+            // q_track:"back to december",
+            q_artist: search,
+            // f_has_lyrics: 1,
+            format:"jsonp",
+            callback:"jsonp_callback"
+        },
+        url: "http://api.musixmatch.com/ws/1.1/track.search",
+        dataType: "jsonp",
+        jsonpCallback: 'jsonp_callback',
+        contentType: 'application/json',
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+            console.log(textStatus);
+            console.log(errorThrown);
+        },
+        success: function(data) {
+            console.log(data);
 
-
-      // $.getJSON('http://api.musixmatch.com/ws/1.1/track.search?q_artist=' + search + '&page_size=100&apikey=45f030feddac66fcfa2f9e9f659608c4', function(data){
-        
+       
         var tracksArray = data.message.body.track_list;
         console.log(tracksArray);
         var str = '';
@@ -95,7 +107,8 @@
         $('#lyric').append('<div><strong>' + val[0] + '</strong><span style="color:red"> ' + val[1] + '</span></div>');
       });
 
-    }); //end of hitAPI callback function
+    } //end of hitAPI callback function
+  })
   } //end of hitAPI function
 
 
