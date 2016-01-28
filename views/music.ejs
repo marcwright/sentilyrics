@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+</head>
+<body>
+
+  <form>
+    Artist: <input type="text" placeholder="artist" id="searchCond"/>
+    <button value="Submit" id="artistSearch">Search</button>
+  </form>
+  
+  <div id='artist'></div>
+  <div id='lyric'></div>
+
+  <script type="text/javascript">
+    var search;
+    var goodArr = [];
+
+    //click event that calls the hitAPI function passing in the search param
+    $('#artistSearch').on('click', function(e){
+      e.preventDefault();
+      search = $('#searchCond').val();
+      $('#artist').text('searching for ' + search);
+      hitAPI(search);
+      goodArr = [];
+      $('#lyric').empty();
+      
+     });
+
+    //calls the music match API and returns all of the words in an array
+    function hitAPI(search){
+      $.getJSON('http://api.musixmatch.com/ws/1.1/track.search?q_artist=' + search + '&page_size=100&apikey=45f030feddac66fcfa2f9e9f659608c4', function(data){
+        
+        var arr = data.message.body.track_list;
+        var str = '';
+           
+        $.each(arr, function(i, val){
+          str += ' ' + val.track.track_name
+        });
+        
+        strArr = str.toLowerCase().replace(/\W/g, ' ').split(' ');
+         
+
+      function removeBasicWords(array){
+        $.each(strArr, function(i, val){
+          if (val !== 'the' && val !== " " && val !== "" && val !== 'of' && val !== 'and' && val !== 'a' && val.length > 1 ){
+            goodArr.push(val);
+          }
+        });
+      };
+
+      //converts the goodArr into a JSON object
+      function count(arr){
+        return arr.reduce(function(m,e){
+          m[e] = (+m[e]||0)+1; 
+          return m;
+        },{})};
+
+      function sortWordFrequency(obj){
+        // convert object into array
+        var sortable=[];
+        for(var key in obj)
+            if(obj.hasOwnProperty(key))
+                sortable.push([key, obj[key]]); // each item is an array in format [key, value]
+
+        // sort items by value
+        sortable.sort(function(a, b)
+        {
+          return a[1]-b[1]; // compare numbers
+        });
+        return sortable.reverse(); // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
+      }
+
+      removeBasicWords(strArr);
+      goodArr = sortWordFrequency(count(goodArr));
+      $('#artist').empty();
+      $('#searchCond').val('');
+
+      $('#artist').append("<p>Here's the frequency of words in " + search + "'s song titles</p>");
+      
+      $.each(goodArr, function(i, val){
+        $('#lyric').append('<div><strong>' + val[0] + '</strong><span style="color:red"> ' + val[1] + '</span></div>');
+      });
+
+    }); //end of hitAPI callback function
+  } //end of hitAPI function
+
+
+  </script>
+
+
+</body>
+</html>
