@@ -16,7 +16,7 @@ $(function() {
     search = $('#searchCond').val();
     $('#artist').text('searching for ' + search); //briefly displays during API call
     musixmatchAPIArtistSearch(search); // 
-    goodArr = []; //empties out parsed out Array
+    goodWordsArray = []; //empties out parsed out Array
     $('#lyric').empty(); //empties out lyrics div
   }
 
@@ -51,10 +51,8 @@ $(function() {
 
   // digs into data and parses song titles into an array of words
   function parseMusicData(data){
-
     var tracksArray = data.message.body.track_list; //each individual track object
-    titlesStringArray(tracksArray);
-    
+    titlesStringArray(tracksArray);    
 
     // remove basic words from array, pushes good words into goodArray[]
     function removeBasicWords(array){
@@ -103,14 +101,18 @@ $(function() {
     function reset(){
       $('#artist').empty();
       $('#searchCond').val('');
-      $('#artist').append("<p>Here's the frequency of words in " + search + "'s song titles</p>");
-      
+      $('#artist').append("<p>Here are the frequency of words in " + search + "'s song titles</p>");
+    
+      // prints key/val to browser
       $.each(goodWordsArray, function(i, val){
-        $('#lyric').append('<div><strong>' + val[0] + '</strong><span style="color:red"> ' + val[1] + '</span></div>');
+        $('#lyric').append('<div><strong style="color:red">' + val[1] + ':</strong><span> ' + val[0] + '</span></div>');
       });
     }
-    
+
+
+
     goodWordsArray = sortWordFrequency(count(goodWordsArray));
+    console.log(goodWordsArray);
     reset();
   }
 });

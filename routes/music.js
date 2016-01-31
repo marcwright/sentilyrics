@@ -1,14 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
-router.get('/results', function(req, res, next) {
-  var users = ["marc", "maren", "diesel"];
-  res.render('music', { users: users });
+  console.log(res);
+  res.render('music', { search: "marc" });
 });
 
 module.exports = router;
