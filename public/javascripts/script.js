@@ -57,7 +57,7 @@ $(function() {
     // remove basic words from array, pushes good words into goodArray[]
     function removeBasicWords(array){
       $.each(array, function(i, val){
-        if (val !== 'the' && val !== " " && val !== "" && val !== 'of' && val !== 'and' && val !== 'a' && val.length > 1 ){
+        if (val !== 'the' && val !== " " && val !== "" && val !== 'of' && val !== 'and' && val !== 'a' && val.length > 1 && val !== "remix" && val !== "digital" && val !== "remaster" ){
           goodWordsArray.push(val);
         }
       });
@@ -109,9 +109,25 @@ $(function() {
       });
     }
 
-
-
     goodWordsArray = sortWordFrequency(count(goodWordsArray));
+
+
+    // $.each(goodWordsArray, function(i, val){
+    //   var newHash = {};
+    //   newHash.val[1] = "Marc"
+    // });
+
+    // console.log(newHash);
+
+      var newHash = { one: [], two: [], three: [] };
+    for (i = 0; i < goodWordsArray.length; i++) {
+
+      if (goodWordsArray[i][1] == 1){
+        newHash.one.push(goodWordsArray[i][0]);
+      }
+    }
+    
+    console.log(newHash.one);
     console.log(goodWordsArray);
     reset();
   }
