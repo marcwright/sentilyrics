@@ -4,6 +4,7 @@
     <title>Word Frequency in Song Titles</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="/javascripts/wordcloud2.js"></script>
     <script src="/javascripts/script.js"></script>
   </head>
 <body>
@@ -12,9 +13,13 @@
     Artist: <input type="text" placeholder="artist" id="searchCond" name="userSearch"/>
     <button value="Submit" id="artistSearch">Search</button>
   </form>
-  
+
   <div id='artist'></div>
-  <div id='lyric'></div>
+  <canvas id="my_canvas" width="600px" height="400px"></canvas>
+  <!-- <div>
+    <div id="my_canvas" style="width:700px;height:600px"></div>
+  </div> -->
+  <!-- <div id='lyric'></div> -->
 
 </body>
 </html>
