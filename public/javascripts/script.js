@@ -113,15 +113,16 @@ $(function() {
 
 
    
-    console.log(goodWordsArray.slice(0,10));
+    console.log(goodWordsArray);
 
     var options = {
       list: goodWordsArray,
       // fontWeight: "bold",
-      weightFactor: 8,
+      weightFactor: 10,
       // origin: [400,400],
       // shape: "star",
-      shuffle: true
+      shuffle: true,
+      rotateRatio: .5
     }
     
     WordCloud(document.getElementById('my_canvas'), options );
