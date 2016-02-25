@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var Xray = require('x-ray');
+var Papa = require('papaparse');
+var songTitles = require("../public/javascripts/test_export");
+
 
 router.get('/', function(req, res, next) {
   console.log(req.params);
@@ -12,6 +15,24 @@ router.get('/', function(req, res, next) {
   console.log(lyrics);
   })
   res.render('music', {lyrics: lyrics});
+});
+
+router.get('/d3', function(req, res, next) {
+  console.log(req.params);
+  var x = Xray();
+  var lyrics = '';
+
+  x('http://www.songlyrics.com/adele/hello-lyrics/', '#songLyricsDiv')(function(err, lyricsh) {
+    lyrics = lyricsh;
+  console.log(lyrics);
+  })
+
+  console.log(songTitles.name);
+
+  // var csv = Papa.unparse(goodWordsArray2);
+  // console.log(csv);
+
+  res.render('d3', {lyrics: lyrics});
 });
 
 router.post('/', function(req, res, next) {

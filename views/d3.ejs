@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Word Frequency in Song Titles</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- CSS concatenated and minified via ant build script-->
+    <link rel="stylesheet" href="stylesheets/reset.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style_bubble.css">
+    <!-- end CSS-->
+
+    <script src="/javascripts/libs/modernizr-2.0.6.min.js"></script>
+
+  </head>
+<body>
+  <h1>How frequently are words used in song titles?</h1>
+  <form>
+    Artist: <input type="text" placeholder="artist" id="searchCond" name="userSearch"/>
+    <button value="Submit" id="artistSearch">Search</button>
+  </form>
+
+      <form method="post" action="/">
+      <label for="artist_search">Artist</label><br>
+      <input type="text" name="artist_search" id="artist_search"><br>
+
+      <label for="song_search">Song</label><br>
+      <input type="text" name="song_search" id="song_search"><br>
+
+      <button>Go go gadget Postmaker</button><br>
+    </form>
+
+  <div id='artist'></div>
+  <canvas id="my_canvas" width="800px" height="600px"></canvas>
+  <div><%= lyrics %></div>
+  <!-- <div>
+    <div id="my_canvas" style="width:700px;height:600px"></div>
+  </div> -->
+  <!-- <div id='lyric'></div> -->
+
+  <div id="container" class="container">
+      <select id="text-select">
+        <option value="sherlock">Sherlock Holmes</option>
+        <option value="aesop">Aesop's Fables</option>
+        <option value="alice">Alice in Wonderland</option>
+        <option value="gulliver">Gulliver's Travels</option>
+        <option value="radiohead">Radiohead</option>
+      </select>
+    <header>
+    <h1>Bubble Cloud</h1>
+    <h2>The most frequently used words in:</h2>
+      <h2 id="book-title"></h2>
+    </header>
+    <div id="main" role="main">
+      <div id="vis"></div>
+      <div id="status"></div>
+      <div id="controls">
+        <h3>Jitter</h3>
+        <form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
+          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;">
+          <output name="output" for="input">0.5</output>
+        </form>
+      </div>
+    </div>
+    <footer>
+    <p><a href="http://vallandingham.me/building_a_bubble_cloud.html">Blog Post</a> | <a href="https://github.com/vlandham/bubble_cloud">Source Code</a> | <a href="http://www.nytimes.com/interactive/2012/09/04/us/politics/democratic-convention-words.html">Original Inspiration</a></p>
+    </footer>
+  </div> <!--! end of #container -->
+
+
+ 
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="/javascripts/wordcloud2.js"></script>
+    <script src="/javascripts/script.js"></script>
+    <script src="/javascripts/lyrics.js"></script>
+  <script defer src="/javascripts/plugins.js"></script>
+  <script src="/javascripts/libs/coffee-script.js"></script>
+  <script src="/javascripts/libs/d3.min.js"></script>
+  <script type="text/javascript" src="/javascripts/vis.js"></script>
+
+</body>
+</html>

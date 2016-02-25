@@ -1,6 +1,7 @@
 console.log('working');
 
 $(function() {
+  var exports = module.exports
   var search;
   var goodWordsArray = [];
 
@@ -102,7 +103,9 @@ $(function() {
       $('#artist').empty();
       $('#searchCond').val('');
       $('#artist').append("<p>Here are the frequency of words in " + search + "'s song titles</p>");
-    
+      
+      var csv = Papa.unparse(goodWordsArray);
+      console.log(csv);
       // prints key/val to browser
       $.each(goodWordsArray, function(i, val){
         $('#lyric').append('<div><strong style="color:red">' + val[1] + ':</strong><span> ' + val[0] + '</span></div>');
@@ -129,4 +132,7 @@ $(function() {
 
     reset();
   }
+
 });
+
+
