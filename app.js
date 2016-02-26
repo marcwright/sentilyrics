@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 // var require = require('requirejs');
 var Xray = require('x-ray');
 var Papa = require('papaparse');
+var _ = require("underscore");
 
 var music = require('./routes/music');
 

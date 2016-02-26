@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var Xray = require('x-ray');
 var Papa = require('papaparse');
+
+// var scriptFile = require("../public/javascripts/script");
 var songTitles = require("../public/javascripts/test_export");
 
 
@@ -14,7 +16,7 @@ router.get('/', function(req, res, next) {
     lyrics = lyricsh;
   console.log(lyrics);
   })
-  res.render('music', {lyrics: lyrics});
+  res.render('music', {lyrics: "Marc"});
 });
 
 router.get('/d3', function(req, res, next) {
@@ -27,12 +29,9 @@ router.get('/d3', function(req, res, next) {
   console.log(lyrics);
   })
 
-  console.log(songTitles.name);
+  // console.log(scriptFile.csv); 
 
-  // var csv = Papa.unparse(goodWordsArray2);
-  // console.log(csv);
-
-  res.render('d3', {lyrics: lyrics});
+  res.render('d3', {lyrics: songTitles.name});
 });
 
 router.post('/', function(req, res, next) {
