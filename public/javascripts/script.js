@@ -113,13 +113,8 @@
 
       goodWordsArray = sortWordFrequency(count(goodWordsArray));
 
-
-     
-      // console.log(goodWordsArray);
-
-      
-
       var makeShitHappen = function(){
+          // Options for the Word Cloud Function below
           var options = {
           list: goodWordsArray,
           // fontWeight: "bold",
@@ -132,66 +127,40 @@
 
         WordCloud(document.getElementById('my_canvas'), options );
 
+        // Using Papa Parse to convert goodWordsArray to csv, setting headers
         var csv = Papa.unparse({
             fields: ["name", "count"],
             data: goodWordsArray
-            // config: {
-            //   delimiter: "",  // auto-detect
-            //   newline: "",  // auto-detect
-            //   quotes: true
-            // }
           });
 
-        console.log(csv);
+        //this code converts the csv back into JSON
+        // var arr = csv.split('\n');     
 
-        var arr = csv.split('\n');     
+        // var jsonObj = [];
+        // var headers = arr[0].split(',');
+        // for(var i = 1; i < arr.length; i++) {
+        //   var data = arr[i].split(',');
+        //   var obj = {};
+        //   for(var j = 0; j < data.length; j++) {
+        //      obj[headers[j].trim()] = data[j].trim();
+        //   }
+        //   jsonObj.push(obj);
+        // }
 
-        var jsonObj = [];
-        var headers = arr[0].split(',');
-        for(var i = 1; i < arr.length; i++) {
-          var data = arr[i].split(',');
-          var obj = {};
-          for(var j = 0; j < data.length; j++) {
-             obj[headers[j].trim()] = data[j].trim();
-          }
-          jsonObj.push(obj);
-        }
-
-        wordObj = JSON.stringify(jsonObj);
-        console.log(typeof jsonObj);
-
-
-        console.log(typeof wordObj);
-        // console.log(JSON.stringify(csv));
-
-        var csvAgain = Papa.unparse({
-            fields: ["name", "count"],
-            data: wordObj,
-            config: {
-              delimiter: "\n",  // auto-detect
-              newline: "",  // auto-detect
-              quotes: true
-            }
-          });
-
-        // console.log(typeof csvAgain);
-
-
-
-        renderBubbles(csv);
-
+        // wordObj = JSON.stringify(jsonObj);
+    
+        // var csvAgain = Papa.unparse({
+        //     fields: ["name", "count"],
+        //     data: wordObj,
+        //     config: {
+        //       delimiter: "\n",  // auto-detect
+        //       newline: "",  // auto-detect
+        //       quotes: true
+        //     }
+        //   });
+        renderBubbles(csv); //this function is in vis.js
       }
-      
-      // WordCloud(document.getElementById('my_canvas'), options );
-
-
-
-      // var csv = Papa.unparse(goodWordsArray);
-      // console.log(csv);
       makeShitHappen();
-
-      // printWordsVis();
-      
 
       reset();
     }

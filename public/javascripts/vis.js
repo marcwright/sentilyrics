@@ -259,11 +259,11 @@
     }
   ];
 
+  // Passing in csv object from makeShitHappen() in script.js
   var renderBubbles = function(csv) {
     var display, key, plot, text;
     plot = Bubbles();
     display = function(data) {
-      console.log(data);
       return plotData("#vis", data, plot);
     };
     key = decodeURIComponent(location.search).replace("?", "");
@@ -282,53 +282,11 @@
       location.replace("#");
       return location.search = encodeURIComponent(key);
     });
-    d3.select("#book-title").html(text.name);
-    // console.log(csv);
-
+    d3.select("#book-title").html(search);
+    
     letters = d3.csv.parse(csv, function(d) { 
-      // console.log(d);
       return d
-        // return {
-        //     letter:d.letter, 
-        //     frequency:+d.frequency
-        //     }; 
-        });
-    display(letters)
-    // return d3.csv("data/" + text.file, display);
-    // json = JSON.stringify( goodWordsArray );
-    // display(csv);
-    // return d3.json(csv, display);
-    // return d3.csv(csv, function(data){
-    //   console.log(data)
-    //   display(data);
-    //   });
+    });
+    
+    display(letters);
   };
-
-// // }).call(this);
-
-// $(function() {
-//     var display, key, plot, text;
-//     plot = Bubbles();
-//     display = function(data) {
-//       return plotData("#vis", data, plot);
-//     };
-//     key = decodeURIComponent(location.search).replace("?", "");
-//     text = texts.filter(function(t) {
-//       return t.key === key;
-//     })[0];
-//     if (!text) {
-//       text = texts[0];
-//     }
-//     $("#text-select").val(key);
-//     d3.select("#jitter").on("input", function() {
-//       return plot.jitter(parseFloat(this.output.value));
-//     });
-//     d3.select("#text-select").on("change", function(e) {
-//       key = $(this).val();
-//       location.replace("#");
-//       return location.search = encodeURIComponent(key);
-//     });
-//     d3.select("#book-title").html(text.name);
-//     return d3.csv("data/" + text.file, display);
-//   });
-
