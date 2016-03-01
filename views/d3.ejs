@@ -31,7 +31,7 @@
 
   <div id='artist'></div>
   <canvas id="my_canvas" width="800px" height="600px"></canvas>
-  <div><%= lyrics %></div>
+  <div height="200px" width="200px"><%= lyrics %></div>
   
 
   <div id="container" class="container">
@@ -68,15 +68,23 @@
  
 
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <!-- <script src="/javascripts/libs/x-ray/index.js"></script> -->
 
     <script src="/javascripts/libs/papaparse.min.js"></script>
     <script src="/javascripts/wordcloud2.js"></script>
     <script src="/javascripts/script.js"></script>
-    <script src="/javascripts/lyrics.js"></script>
+    <!-- <script src="/javascripts/lyrics.js"></script> -->
   <script defer src="/javascripts/plugins.js"></script>
   <script src="/javascripts/libs/coffee-script.js"></script>
   <script src="/javascripts/libs/d3.min.js"></script>
   <script type="text/javascript" src="/javascripts/vis.js"></script>
+
+  <script>
+    var lyrics = <%= lyrics %>;
+
+    var name = JSON.stringify(lyrics);
+    console.log("line 86");
+  </script>
 
 </body>
 </html>

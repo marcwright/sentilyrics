@@ -44,6 +44,7 @@
             console.log(errorThrown);
         },
         success: function(data) {
+          
           parseMusicData(data);            
         } 
       }) //end of AJAX
@@ -72,6 +73,7 @@
           });
           
           stringArray = str.toLowerCase().replace(/\W/g, ' ').split(' ');
+          // console.log(stringArray);
           removeBasicWords(stringArray);
       };
 

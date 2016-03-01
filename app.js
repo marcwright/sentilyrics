@@ -4,15 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-// var require = require('requirejs');
 var Xray = require('x-ray');
-var Papa = require('papaparse');
-var _ = require("underscore");
+var browserify = require('browserify');
+var app = express();
+
 
 var music = require('./routes/music');
 
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

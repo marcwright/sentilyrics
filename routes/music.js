@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var Xray = require('x-ray');
-var Papa = require('papaparse');
+// var Papa = require('papaparse');
 
-module.exports.lyrics = "Schmitty" 
+// module.exports.lyrics = "Schmitty" 
 // var scriptFile = require("../public/javascripts/script");
 // var songTitles = require("../public/javascripts/test_export");
 
@@ -20,19 +20,33 @@ module.exports.lyrics = "Schmitty"
 //   res.render('music', {lyrics: "Marc"});
 // });
 
-router.get('/d3', function(req, res, next) {
+router.get('/', function(req, res, next) {
   var x = Xray();
   var lyrics = '';
 
-  x('http://www.songlyrics.com/adele/hello-lyrics/', '#songLyricsDiv')(function(err, lyricsh) {
-    var lyrics = lyricsh;
-    console.log("line 29 response " + lyrics);
-    return lyrics;
-  })
-  
+ x('http://www.songlyrics.com/adele/hello-lyrics/', '#songLyricsDiv')(function(err, lyricsh) {
+    lyrics = lyricsh;
 
-  console.log("line 32 " + res.lyrics);
-  res.render('d3', {lyrics: res.lyrics});
+    function lyricsStringArray(str){    
+      stringArray = str.toLowerCase().replace(/\W/g, ' ').split(' ');
+      console.log(stringArray);
+      return stringArray;          
+    };
+
+    var sa = lyricsStringArray(lyrics);
+
+
+    console.log("line 34 " + lyrics.toString());
+    console.log("line 35 " + typeof lyrics);
+    res.render('d3', {lyrics: lyrics});
+
+
+
+
+
+  });
+
+
 });
 
 router.post('/', function(req, res, next) {
