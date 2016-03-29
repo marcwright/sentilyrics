@@ -65,7 +65,7 @@ router.post('/', function(req, res, next) {
 
 
   console.log("line 30" + lyrics);
-  res.render('music', {lyrics: lyrics});
+  res.render('d3', {lyrics: lyrics});
 });
 
 module.exports = router;

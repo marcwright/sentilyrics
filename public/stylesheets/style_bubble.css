@@ -6,6 +6,10 @@ a, a:visited {
   color:#333;
 }
 
+#artistSearch {
+  margin-bottom: 10px;
+}
+
 #container {
   padding-top:20px;
   width: 980px;
@@ -42,7 +46,7 @@ header {
   padding: 20px;
   background-color: #eee;
   margin: 10px;
-  width: 350px;
+  /*width: 350px;*/
 }
 
 #bubble-background {
