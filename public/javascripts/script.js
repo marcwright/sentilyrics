@@ -1,7 +1,6 @@
+console.log("script has loaded");
+console.log(typeof lyrics);
 
-
-  // $(function() {
-    // var exports = module.exports;
     var search;
     var goodWordsArray = [];
 
@@ -12,51 +11,52 @@
 
     // calls the hitAPI function passing in the search param, 
     // also resets the screen for more searces without refresh
-    function searchArtist(e){
-      e.preventDefault(); //stops page refresh with button click
-      search = $('#searchCond').val();
-      $('#artist').text('searching for ' + search); //briefly displays during API call
-      musixmatchAPIArtistSearch(search); // 
-      goodWordsArray = []; //empties out parsed out Array
-      $('#lyric').empty(); //empties out lyrics div
-    }
+    // function searchArtist(e){
+    //   e.preventDefault(); //stops page refresh with button click
+    //   // search = $('#searchCond').val();
+    //   // console.log(search);
+    //   // $('#artist').text('searching for ' + search); //briefly displays during API call
+    //   // musixmatchAPIArtistSearch(search); // 
+    //   goodWordsArray = []; //empties out parsed out Array
+    //   // $('#lyric').empty(); //empties out lyrics div
+    // }
 
     //calls the musixmatch API, returns all tracks by given artist
-    function musixmatchAPIArtistSearch(userInput){
-      $.ajax({
-        type: "GET",
-        data: {
-            apikey:"45f030feddac66fcfa2f9e9f659608c4",
-            page_size: 100,
-            // q_track:"back to december",
-            q_artist: userInput,
-            // f_has_lyrics: 1, //only return results with lyrics
-            format:"jsonp",
-            callback:"jsonp_callback"
-        },
-        url: "https://api.musixmatch.com/ws/1.1/track.search",
-        dataType: "jsonp",
-        jsonpCallback: 'jsonp_callback',
-        contentType: 'application/json',
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
-            console.log(textStatus);
-            console.log(errorThrown);
-        },
-        success: function(data) {
+    // function musixmatchAPIArtistSearch(userInput){
+    //   $.ajax({
+    //     type: "GET",
+    //     data: {
+    //         apikey:"45f030feddac66fcfa2f9e9f659608c4",
+    //         page_size: 100,
+    //         // q_track:"back to december",
+    //         q_artist: userInput,
+    //         // f_has_lyrics: 1, //only return results with lyrics
+    //         format:"jsonp",
+    //         callback:"jsonp_callback"
+    //     },
+    //     url: "https://api.musixmatch.com/ws/1.1/track.search",
+    //     dataType: "jsonp",
+    //     jsonpCallback: 'jsonp_callback',
+    //     contentType: 'application/json',
+    //     error: function(jqXHR, textStatus, errorThrown) {
+    //         console.log(jqXHR);
+    //         console.log(textStatus);
+    //         console.log(errorThrown);
+    //     },
+    //     success: function(data) {
           
-          parseMusicData(data);  
+    //       parseMusicData(data);  
 
-        } 
-      }) //end of AJAX
-    } //end of musixmatchAPIArtistSearch function
+    //     } 
+    //   }) //end of AJAX
+    // } //end of musixmatchAPIArtistSearch function
 
 
     // digs into data and parses song titles into an array of words
-    function parseMusicData(data){
-      var tracksArray = data.message.body.track_list; //each individual track object
+    // function parseMusicData(data){
+    //   var tracksArray = data.message.body.track_list; //each individual track object
 
-      titlesStringArray(tracksArray);    
+    //   titlesStringArray(tracksArray);    
 
       // remove basic words from array, pushes good words into goodArray[]
       function removeBasicWords(array){
@@ -68,17 +68,18 @@
       };
 
       // grabs each track title, makes a long string, then an array of words
-      function titlesStringArray(array){    
-          var str = '';
-          $.each(tracksArray, function(i, val){
-            str += ' ' + val.track.track_name
-          });
+      function titlesStringArray(){    
+          // var str = array;
+          // $.each(tracksArray, function(i, val){
+          //   str += ' ' + val.track.track_name
+          // });
           
-          var adeleLyricsString = "Hello, it's me I was wondering if after all these years You'd like to meet, to go over everything They say that time's supposed to heal ya But I ain't done much healing Hello, can you hear me? I'm in California dreaming about who we used to be When we were younger and free I've forgotten how it felt before the world fell at our feet There's such a difference between us And a million miles Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore Hello, how are you? It's so typical of me to talk about myself I'm sorry, I hope that you're well Did you ever make it out of that town Where nothing ever happened? It's no secret That the both of us are running out of time Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore Ooooohh, anymore Ooooohh, anymore Ooooohh, anymore Anymore Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore"
+          // var adeleLyricsString = "Hello, it's me I was wondering if after all these years You'd like to meet, to go over everything They say that time's supposed to heal ya But I ain't done much healing Hello, can you hear me? I'm in California dreaming about who we used to be When we were younger and free I've forgotten how it felt before the world fell at our feet There's such a difference between us And a million miles Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore Hello, how are you? It's so typical of me to talk about myself I'm sorry, I hope that you're well Did you ever make it out of that town Where nothing ever happened? It's no secret That the both of us are running out of time Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore Ooooohh, anymore Ooooohh, anymore Ooooohh, anymore Anymore Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore"
           var adeleLyricsStringFromServer = lyrics;
+          console.log(adeleLyricsStringFromServer);
 
 
-          stringArray = adeleLyricsString.toLowerCase().replace(/\W/g, ' ').split(' ');
+          stringArray = adeleLyricsStringFromServer.toLowerCase().replace(/\W/g, ' ').split(' ');
           console.log(stringArray);
           removeBasicWords(stringArray);
       };
@@ -107,17 +108,17 @@
       }
 
       // re-initialize the page
-      function reset(){
-        $('#artist').empty();
-        $('#searchCond').val('');
-        $('#artist').append("<p>Here are the frequency of words in " + search + "'s song titles</p>");
+      // function reset(){
+      //   $('#artist').empty();
+      //   $('#searchCond').val('');
+      //   $('#artist').append("<p>Here are the frequency of words in " + search + "'s song titles</p>");
         
         
-        // prints key/val to browser
-        $.each(goodWordsArray, function(i, val){
-          $('#lyric').append('<div><strong style="color:red">' + val[1] + ':</strong><span> ' + val[0] + '</span></div>');
-        });
-      }
+      //   // prints key/val to browser
+      //   $.each(goodWordsArray, function(i, val){
+      //     $('#lyric').append('<div><strong style="color:red">' + val[1] + ':</strong><span> ' + val[0] + '</span></div>');
+      //   });
+      // }
 
       goodWordsArray = sortWordFrequency(count(goodWordsArray));
 
@@ -171,9 +172,11 @@
         renderBubbles(csv); //this function is in vis.js
       }
       makeShitHappen();
+      titlesStringArray();
 
-      reset();
-    }
+
+      // reset();
+    // }
   // });
 
 

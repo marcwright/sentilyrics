@@ -11,24 +11,18 @@
 
     <script src="/javascripts/libs/modernizr-2.0.6.min.js"></script>
 
-  <script>
-    var lyrics = "<%= lyrics %>"
-
-    name = lyrics
-    console.log(lyrics);
-  </script>
 
   </head>
 <body>
   <h1>How frequently are words used in song titles?</h1>
-  <form action="/d3lyrics" method="post">
+  <!-- <form action="/d3lyrics" method="post">
     <input type="text" placeholder="artist" id="searchCond" name="artistSearch"/>
     <input type="text" placeholder="song" id="searchCond" name="songSearch"/>
     <button value="Submit" id="artistSearch">Search</button>
 
-    </form>
-  <div id="container" class="container">
-    
+    </form> -->
+  <div><%= lyrics %></div>
+  <div id="container" class="container">  
    
     <div id="main" role="main">
       <div id="vis"></div>
@@ -40,13 +34,17 @@
           <output name="output" for="input">0.5</output>
         </form>
       </div>
-    </div>
-
-   
+    </div>   
   </div> <!--! end of #container -->
 
 
 
+
+  <script>
+    var lyrics = "<%= lyrics %>"
+
+    console.log(lyrics);
+  </script>
  
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <!-- <script src="/javascripts/libs/x-ray/index.js"></script> -->
@@ -56,9 +54,8 @@
  <!--  <script src="/javascripts/lyrics.js"></script> -->
   <script defer src="/javascripts/plugins.js"></script>
   <script src="/javascripts/libs/coffee-script.js"></script>
-    <script src="/javascripts/script.js"></script>
   <script src="/javascripts/libs/d3.min.js"></script>
   <script type="text/javascript" src="/javascripts/vis.js"></script>
-
+    <script src="/javascripts/script.js"></script>
 </body>
 </html>
