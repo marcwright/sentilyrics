@@ -21,29 +21,29 @@ var Xray = require('x-ray');
 // });
 
 router.get('/', function(req, res, next) {
- //  var x = Xray();
- //  var lyrics = '';
+  var x = Xray();
+  var lyrics = '';
 
- // x('http://www.songlyrics.com/adele/hello-lyrics/', '#songLyricsDiv')(function(err, lyricsh) {
- //    lyrics = lyricsh;
+ x('http://www.songlyrics.com/adele/hello-lyrics/', '#songLyricsDiv')(function(err, lyricsh) {
+    lyrics = lyricsh;
+    console.log(lyrics);
 
- //    function lyricsStringArray(str){    
- //      stringArray = str.toLowerCase().replace(/\W/g, ' ').split(' ');
- //      console.log("line 32 " + stringArray);
- //      return stringArray;          
- //    };
+    function lyricsStringArray(str){    
+      stringArray = String(str).toLowerCase().replace("'", "").replace(/\W/g, ' ').split(' ');
+      console.log("stringArray " + stringArray);
+      console.log("typeof lyrics " + typeof lyrics);
+      return stringArray;          
+    };
 
- //    var sa = lyricsStringArray(lyrics);
-
-
- //    console.log("line 34 " + lyrics.toString());
- //    console.log("line 35 " + typeof lyrics);
- //    res.render('d3', {lyrics: lyrics});
+    var sa = lyricsStringArray(lyrics);
+    console.log("sa" + sa);
 
 
- //  });
- // res.render('d3', {lyrics: lyrics});
- res.render('d3', {lyrics: "marc"});
+    // console.log("line 34 " + lyrics);
+    
+    res.render('d3', {lyrics: sa});
+
+  });
 
 
 });

@@ -45,7 +45,8 @@
         },
         success: function(data) {
           
-          parseMusicData(data);            
+          parseMusicData(data);  
+
         } 
       }) //end of AJAX
     } //end of musixmatchAPIArtistSearch function
@@ -54,12 +55,13 @@
     // digs into data and parses song titles into an array of words
     function parseMusicData(data){
       var tracksArray = data.message.body.track_list; //each individual track object
+
       titlesStringArray(tracksArray);    
 
       // remove basic words from array, pushes good words into goodArray[]
       function removeBasicWords(array){
         $.each(array, function(i, val){
-          if (val !== 'the' && val !== " " && val !== "" && val !== 'of' && val !== 'and' && val !== 'a' && val.length > 1 && val !== "remix" && val !== "digital" && val !== "remastered" ){
+          if (val !== 'the' && val !== " " && val !== "" && val !== 'of' && val !== 'and' && val !== 'a' && val.length > 1 && val !== "remix" && val !== "digital" && val !== "remastered"){
             goodWordsArray.push(val);
           }
         });
@@ -72,8 +74,12 @@
             str += ' ' + val.track.track_name
           });
           
-          stringArray = str.toLowerCase().replace(/\W/g, ' ').split(' ');
-          // console.log(stringArray);
+          var adeleLyricsString = "Hello, it's me I was wondering if after all these years You'd like to meet, to go over everything They say that time's supposed to heal ya But I ain't done much healing Hello, can you hear me? I'm in California dreaming about who we used to be When we were younger and free I've forgotten how it felt before the world fell at our feet There's such a difference between us And a million miles Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore Hello, how are you? It's so typical of me to talk about myself I'm sorry, I hope that you're well Did you ever make it out of that town Where nothing ever happened? It's no secret That the both of us are running out of time Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore Ooooohh, anymore Ooooohh, anymore Ooooohh, anymore Anymore Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore"
+          var adeleLyricsStringFromServer = lyrics;
+
+
+          stringArray = adeleLyricsStringFromServer.toLowerCase().replace(/\W/g, ' ').split(' ');
+          console.log(stringArray);
           removeBasicWords(stringArray);
       };
 
@@ -135,6 +141,7 @@
             data: goodWordsArray
           });
 
+        
         //this code converts the csv back into JSON
         // var arr = csv.split('\n');     
 

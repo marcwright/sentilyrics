@@ -17,16 +17,7 @@
   <form>
     <input type="text" placeholder="artist" id="searchCond" name="userSearch"/>
     <button value="Submit" id="artistSearch">Search</button>
-  <!-- </form> -->
 
-      <!-- <form method="post" action="/"> -->
-      <!-- <label for="artist_search">Artist</label><br>
-      <input type="text" name="artist_search" id="artist_search"><br>
-
-      <label for="song_search">Song</label><br>
-      <input type="text" name="song_search" id="song_search"><br>
-
-      <button>Go go gadget Postmaker</button><br> -->
     </form>
 
   <!-- <div id='artist'></div> -->
@@ -35,19 +26,8 @@
   
 
   <div id="container" class="container">
-      <!-- <select id="text-select">
-        <option value="sherlock">Sherlock Holmes</option>
-        <option value="aesop">Aesop's Fables</option>
-        <option value="alice">Alice in Wonderland</option>
-        <option value="gulliver">Gulliver's Travels</option>
-        <option value="tove">Tove Lo</option>
-        <option value="dylan">Dylan</option>
-      </select> -->
-    <header>
-    <!-- <h1>Bubble Cloud</h1>
-    <h2>The most frequently used words in:</h2> -->
-      <h2 id="book-title"></h2>
-    </header>
+    
+   
     <div id="main" role="main">
       <div id="vis"></div>
       <div id="status"></div>
@@ -80,7 +60,7 @@
   <script type="text/javascript" src="/javascripts/vis.js"></script>
 
   <script>
-    var lyrics = <%= lyrics %>
+    var lyrics = "<%= lyrics %>"
 
     name = lyrics
     console.log(name);
