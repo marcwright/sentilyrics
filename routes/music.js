@@ -4,36 +4,21 @@ var Xray = require('x-ray');
 
 
 router.get('/', function(req, res, next) {
-  // console.log(req.body);
-  // var x = Xray();
-  // var lyrics = '';
-  // var artist = req.body.artistSearch
-  // var song = req.body.songSearch
-  // var url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
-
-  // x(url, '#songLyricsDiv')(function(err, lyricsh) {
-  //   lyrics = lyricsh;
-
-  //   function lyricsStringArray(str){    
-  //     stringArray = String(str).toLowerCase().replace("'", "").replace(/\W/g, ' ').split(' ');
-  //     return stringArray;
-  //   };
-
-  //   var sa = lyricsStringArray(lyrics);
-  //   console.log("get lyrics" + sa);
-
-    res.render('form');
-  // });
-
-
+  res.render('form');
 });
 
 router.post('/d3lyrics', function(req, res, next) {
-  console.log(req.body);
   var x = Xray();
   var lyrics = '';
-  var artist = req.body.artistSearch
-  var song = req.body.songSearch
+
+  var artistArray = req.body.artistSearch.split(' ');
+  var artist = artistArray.join('+');
+  var songArray = req.body.songSearch.split(' ');
+  var song = songArray.join('+');
+
+  console.log(req.body);
+  console.log(artistArray);
+
   var url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
   var sa;
 
@@ -41,12 +26,12 @@ router.post('/d3lyrics', function(req, res, next) {
     lyrics = lyricsh;
 
     function lyricsStringArray(str){    
-      stringArray = String(str).toLowerCase().replace("'", "").replace(/\W/g, ' ').split(' ');
+      stringArray = String(str).toLowerCase().replace("'", "").replace(/,/g, "").replace(/'/g, "").replace(/\W/g, ' ').split(' ');
       return stringArray;
     };
 
     var sa = lyricsStringArray(lyrics);
-    console.log("post lyrics" + sa[2]);
+    console.log("post lyrics:   " + sa);
     res.render('d3', {lyrics: sa, artist: artist, song: song});
 
   });
