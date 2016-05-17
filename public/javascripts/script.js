@@ -66,7 +66,7 @@ console.log(typeof lyrics);
           }
         });
         goodWordsArray = sortWordFrequency(count(goodWordsArray));
-        console.log(goodWordsArray);
+        // console.log(goodWordsArray);
       };
 
       // grabs each track title, makes a long string, then an array of words
@@ -78,7 +78,7 @@ console.log(typeof lyrics);
           
           // var adeleLyricsString = "Hello, it's me I was wondering if after all these years You'd like to meet, to go over everything They say that time's supposed to heal ya But I ain't done much healing Hello, can you hear me? I'm in California dreaming about who we used to be When we were younger and free I've forgotten how it felt before the world fell at our feet There's such a difference between us And a million miles Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore Hello, how are you? It's so typical of me to talk about myself I'm sorry, I hope that you're well Did you ever make it out of that town Where nothing ever happened? It's no secret That the both of us are running out of time Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore Ooooohh, anymore Ooooohh, anymore Ooooohh, anymore Anymore Hello from the other side I must've called a thousand times to tell you I'm sorry, for everything that I've done But when I call you never seem to be home Hello from the outside At least I can say that I've tried to tell you I'm sorry, for breaking your heart But it don't matter, it clearly doesn't tear you apart anymore"
           var adeleLyricsStringFromServer = lyrics;
-          console.log(adeleLyricsStringFromServer);
+          // console.log(adeleLyricsStringFromServer);
 
 
           stringArray = adeleLyricsStringFromServer.toLowerCase().replace(/\W/g, ' ').split(' ');
@@ -171,7 +171,7 @@ console.log(typeof lyrics);
         //       quotes: true
         //     }
         //   });
-        console.log(csv);
+        // console.log(csv);
 
         renderBubbles(csv); //this function is in vis.js
       }

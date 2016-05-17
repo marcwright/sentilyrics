@@ -14,14 +14,15 @@
 
   </head>
 <body>
-  <h1>How frequently are words used in song titles?</h1>
+  
+  <div><h1><%= artist %> + <%= song %></h1></div>
+  <a href="/">Search Again</a>
   <!-- <form action="/d3lyrics" method="post">
     <input type="text" placeholder="artist" id="searchCond" name="artistSearch"/>
     <input type="text" placeholder="song" id="searchCond" name="songSearch"/>
     <button value="Submit" id="artistSearch">Search</button>
 
     </form> -->
-  <div><%= lyrics %></div>
   <div id="container" class="container">  
    
     <div id="main" role="main">
@@ -42,8 +43,10 @@
 
   <script>
     var lyrics = "<%= lyrics %>"
+    var artist = "<%= artist %>"
+    var song = "<%= song %>"
 
-    console.log(lyrics);
+    console.log(artist);
   </script>
  
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>

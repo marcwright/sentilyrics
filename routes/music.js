@@ -47,7 +47,7 @@ router.post('/d3lyrics', function(req, res, next) {
 
     var sa = lyricsStringArray(lyrics);
     console.log("post lyrics" + sa[2]);
-    res.render('d3', {lyrics: sa});
+    res.render('d3', {lyrics: sa, artist: artist, song: song});
 
   });
 });
