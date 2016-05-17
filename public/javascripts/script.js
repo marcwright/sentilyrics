@@ -65,6 +65,8 @@ console.log(typeof lyrics);
             goodWordsArray.push(val);
           }
         });
+        goodWordsArray = sortWordFrequency(count(goodWordsArray));
+        console.log(goodWordsArray);
       };
 
       // grabs each track title, makes a long string, then an array of words
@@ -80,7 +82,7 @@ console.log(typeof lyrics);
 
 
           stringArray = adeleLyricsStringFromServer.toLowerCase().replace(/\W/g, ' ').split(' ');
-          console.log(stringArray);
+          // console.log(stringArray);
           removeBasicWords(stringArray);
       };
 
@@ -120,7 +122,8 @@ console.log(typeof lyrics);
       //   });
       // }
 
-      goodWordsArray = sortWordFrequency(count(goodWordsArray));
+      // goodWordsArray = sortWordFrequency(count(goodWordsArray));
+
 
       var makeShitHappen = function(){
           // Options for the Word Cloud Function below
@@ -168,11 +171,12 @@ console.log(typeof lyrics);
         //       quotes: true
         //     }
         //   });
-        // console.log(csv);
+        console.log(csv);
+
         renderBubbles(csv); //this function is in vis.js
       }
-      makeShitHappen();
       titlesStringArray();
+      makeShitHappen();
 
 
       // reset();
