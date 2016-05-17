@@ -1,70 +1,54 @@
 var express = require('express');
 var router = express.Router();
 var Xray = require('x-ray');
-// var Papa = require('papaparse');
 
-// module.exports.lyrics = "Schmitty" 
-// var scriptFile = require("../public/javascripts/script");
-// var songTitles = require("../public/javascripts/test_export");
-
-
-// router.get('/', function(req, res, next) {
-//   console.log(req.params);
-//   var x = Xray();
-//   var lyrics = '';
-
-//   x('http://www.songlyrics.com/adele/hello-lyrics/', '#songLyricsDiv')(function(err, lyricsh) {
-//     lyrics = lyricsh;
-//   console.log(lyrics);
-//   })
-//   res.render('music', {lyrics: "Marc"});
-// });
 
 router.get('/', function(req, res, next) {
+  console.log(req.body);
   var x = Xray();
   var lyrics = '';
+  var artist = req.body.artistSearch
+  var song = req.body.songSearch
+  var url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
 
- x('http://www.songlyrics.com/adele/hello-lyrics/', '#songLyricsDiv')(function(err, lyricsh) {
+  x(url, '#songLyricsDiv')(function(err, lyricsh) {
     lyrics = lyricsh;
-    console.log(lyrics);
 
     function lyricsStringArray(str){    
       stringArray = String(str).toLowerCase().replace("'", "").replace(/\W/g, ' ').split(' ');
-      console.log("stringArray " + stringArray);
-      console.log("typeof lyrics " + typeof lyrics);
-      return stringArray;          
+      return stringArray;
     };
 
     var sa = lyricsStringArray(lyrics);
-    console.log("sa" + sa);
+    console.log("get lyrics" + sa);
 
-
-    // console.log("line 34 " + lyrics);
-    
     res.render('d3', {lyrics: sa});
-
   });
 
 
 });
 
-router.post('/', function(req, res, next) {
-  console.log(req.body.artist_search);
+router.post('/d3lyrics', function(req, res, next) {
+  console.log(req.body);
   var x = Xray();
   var lyrics = '';
-  var artist = req.body.artist_search
-  var song = req.body.song_search
+  var artist = req.body.artistSearch
+  var song = req.body.songSearch
   var url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
 
-  x(url, '#songLyricsDiv')(function(err, lyrics) {
-    lyrics = lyrics;
-    console.log("line 27" + lyrics);
-    return lyrics;
-  })
+  x(url, '#songLyricsDiv')(function(err, lyricsh) {
+    lyrics = lyricsh;
 
+    function lyricsStringArray(str){    
+      stringArray = String(str).toLowerCase().replace("'", "").replace(/\W/g, ' ').split(' ');
+      return stringArray;
+    };
 
-  console.log("line 30" + lyrics);
-  res.render('d3', {lyrics: lyrics});
+    var sa = lyricsStringArray(lyrics);
+    console.log("post lyrics" + sa);
+
+    res.render('d3', {lyrics: sa});
+  });
 });
 
 module.exports = router;

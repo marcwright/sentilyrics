@@ -78,7 +78,7 @@
           var adeleLyricsStringFromServer = lyrics;
 
 
-          stringArray = adeleLyricsStringFromServer.toLowerCase().replace(/\W/g, ' ').split(' ');
+          stringArray = adeleLyricsString.toLowerCase().replace(/\W/g, ' ').split(' ');
           console.log(stringArray);
           removeBasicWords(stringArray);
       };
@@ -133,7 +133,7 @@
           rotateRatio: .5
         }
 
-        WordCloud(document.getElementById('my_canvas'), options );
+        // WordCloud(document.getElementById('my_canvas'), options );
 
         // Using Papa Parse to convert goodWordsArray to csv, setting headers
         var csv = Papa.unparse({
@@ -167,6 +167,7 @@
         //       quotes: true
         //     }
         //   });
+        // console.log(csv);
         renderBubbles(csv); //this function is in vis.js
       }
       makeShitHappen();

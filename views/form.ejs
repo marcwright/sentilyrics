@@ -11,13 +11,6 @@
 
     <script src="/javascripts/libs/modernizr-2.0.6.min.js"></script>
 
-  <script>
-    var lyrics = "<%= lyrics %>"
-
-    name = lyrics
-    console.log(lyrics);
-  </script>
-
   </head>
 <body>
   <h1>How frequently are words used in song titles?</h1>
@@ -27,38 +20,25 @@
     <button value="Submit" id="artistSearch">Search</button>
 
     </form>
-  <div id="container" class="container">
-    
-   
-    <div id="main" role="main">
-      <div id="vis"></div>
-      <div id="status"></div>
-      <div id="controls">
-        <h3>Jitter</h3>
-        <form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
-          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;">
-          <output name="output" for="input">0.5</output>
-        </form>
-      </div>
-    </div>
 
-   
-  </div> <!--! end of #container -->
 
 
 
  
+
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <!-- <script src="/javascripts/libs/x-ray/index.js"></script> -->
 
     <script src="/javascripts/libs/papaparse.min.js"></script>
- <!--  <script src="/javascripts/wordcloud2.js"></script> -->
- <!--  <script src="/javascripts/lyrics.js"></script> -->
+    <script src="/javascripts/wordcloud2.js"></script>
+    <script src="/javascripts/script.js"></script>
+    <!-- <script src="/javascripts/lyrics.js"></script> -->
   <script defer src="/javascripts/plugins.js"></script>
   <script src="/javascripts/libs/coffee-script.js"></script>
-    <script src="/javascripts/script.js"></script>
   <script src="/javascripts/libs/d3.min.js"></script>
   <script type="text/javascript" src="/javascripts/vis.js"></script>
+
+ 
 
 </body>
 </html>
