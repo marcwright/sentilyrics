@@ -5,9 +5,9 @@ console.log(typeof lyrics);
     var goodWordsArray = [];
 
     // event handler that calls the searchArtist function
-    $('#artistSearch').on('click', function(e){
-      searchArtist(e);     
-     });
+    // $('#artistSearch').on('click', function(e){
+    //   searchArtist(e);     
+    //  });
 
     // calls the hitAPI function passing in the search param, 
     // also resets the screen for more searces without refresh
