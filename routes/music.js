@@ -18,7 +18,7 @@ router.post('/albums', function(req, res, next) {
   console.log("artist: " + artist);
 
 
-  request.get({ url: "https://api.musixmatch.com/ws/1.1/track.search?q_artist=" + artist + "&apikey=45f030feddac66fcfa2f9e9f659608c4" }, function(error, response, body) { 
+  request.get({ url: "https://api.musixmatch.com/ws/1.1/track.search?q_artist=" + artist + "&page_size=100&apikey=45f030feddac66fcfa2f9e9f659608c4" }, function(error, response, body) { 
       if (!error && response.statusCode == 200) { 
         // var albums = JSON.parse(body);
         var tracksArray = JSON.parse(body).message.body.track_list;
@@ -44,7 +44,7 @@ router.post('/albums', function(req, res, next) {
 
 
 
-router.post('/d3lyrics', function(req, res, next) {
+router.post('/lyrics', function(req, res, next) {
   var x = Xray();
   var lyrics = '';
 
@@ -68,7 +68,7 @@ router.post('/d3lyrics', function(req, res, next) {
 
     var songLyricsArray = lyricsStringArray(lyrics);
     console.log(songLyricsArray);
-    res.render('d3', {lyrics: songLyricsArray, artist: artist, song: song});
+    res.render('lyrics', {lyrics: songLyricsArray, artist: artist, song: song});
   });
 });
 
