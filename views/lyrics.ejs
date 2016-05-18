@@ -31,10 +31,19 @@
     </div>   
   </div> <!--! end of #container -->
 
+  
+  <div><strong>Positive Words:</strong> <%= posWordsArray %></div>
+  <div><strong>Positive Senti Score:</strong> <%= posScore %></div>
+  <div><strong>Negative Words:</strong> <%= negWordsArray %></div>
+  <div><strong>Negative Senti Score:</strong> <%= negScore %></div>
+  <div><strong>Overall Senti Score:</strong>  <%= overallScore %></div>
+
+
+
   <script>
     var lyrics = "<%= lyrics %>"
 
-    console.log(lyrics);
+    
   </script>
  
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>

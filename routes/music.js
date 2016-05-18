@@ -2,6 +2,9 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 var Xray = require('x-ray');
+var analyze = require('Sentimental').analyze;
+var positivity = require('Sentimental').positivity;
+var negativity = require('Sentimental').negativity;
 
 //GET form route
 router.get('/', function(req, res, next) {
@@ -44,11 +47,32 @@ router.post('/lyrics', function(req, res, next) {
   songArray = req.body.songSearch.split(' ');
   song = songArray.join('+');
 
+
+  // neg = analyze("Hey you worthless scumbag"); //Score: -6, Comparative:-1.5
+  // console.log(neg);
+  // positivity("This is so cool"); //Score: 1, Comparative:.25
+  // negativity("Hey you worthless scumbag"); //Score: 6, Comparative:1.5
+  // analyze("I am happy"); //Score: 3, Comparative: 1
+  // analyze("I am so happy"); //Score: 6, Comparative: 1.5
+  // analyze("I am extremely happy"); //Score: 12, Comparative: 3
+  // analyze("I am really sad"); //Score: -4, Comparative: -1
+
   url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
   
-  x(url, '#songLyricsDiv')(function(err, lyrics) {      
+  x(url, '#songLyricsDiv')(function(err, lyrics) {
+    sentiResults = analyze(lyrics);
+    console.log(sentiResults.positive.words);    
     songLyricsArray = lyrics.replace("'", "").replace(/,/g, "").replace(/'/g, "").replace(/\W/g, ' ').split(' ');
-    res.render('lyrics', {lyrics: songLyricsArray, artist: artist, song: song});
+    res.render('lyrics', {
+      lyrics: songLyricsArray, 
+      artist: artist, 
+      song: song, 
+      posWordsArray: sentiResults.positive.words, 
+      posScore: sentiResults.positive.score,
+      negWordsArray: sentiResults.negative.words, 
+      negScore: sentiResults.negative.score,
+      overallScore: sentiResults.score
+    });
   });
 });
 
