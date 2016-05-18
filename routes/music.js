@@ -3,71 +3,51 @@ var request = require('request');
 var router = express.Router();
 var Xray = require('x-ray');
 
-
+//GET form route
 router.get('/', function(req, res, next) {
   res.render('form');
 });
 
-
-
-
-router.post('/albums', function(req, res, next) {
-  var artistArray = req.body.artistSearch.split(' ');
-  var artist = artistArray.join('+');
-
-  console.log("artist: " + artist);
-
+//POST to hit musixmatch API
+router.post('/titles', function(req, res, next) {
+  artistArray = req.body.artistSearch.split(' ');
+  artist = artistArray.join('+');
 
   request.get({ url: "https://api.musixmatch.com/ws/1.1/track.search?q_artist=" + artist + "&page_size=100&apikey=45f030feddac66fcfa2f9e9f659608c4" }, function(error, response, body) { 
       if (!error && response.statusCode == 200) { 
-        // var albums = JSON.parse(body);
-        var tracksArray = JSON.parse(body).message.body.track_list;
-        var str = '';
+        tracksArray = JSON.parse(body).message.body.track_list;
+
+        pic = tracksArray[0].track.album_coverart_100x100
+        artistPic = (pic == "http://s.mxmcdn.net/images/albums/nocover.png") ? tracksArray[1].track.album_coverart_100x100 : tracksArray[0].track.album_coverart_100x100
+        
+        titlesString = '';
 
         tracksArray.forEach(function(val, i){
-          str += ' ' + val.track.track_name;
+          titlesString += ' ' + val.track.track_name;
         });
 
-        function lyricsStringArray(str){    
-          stringArray = String(str).toLowerCase().replace("'", "").replace(/,/g, "").replace(/'/g, "").replace(/\W/g, ' ').split(' ');
+        function lyricsStringArray(string){    
+          stringArray = titlesString.replace("'", "").replace(/,/g, "").replace(/'/g, "").replace(/\W/g, ' ').split(' ');
           return stringArray;
         };
 
-        var songLyricsArray = lyricsStringArray(str);
-        console.log(songLyricsArray);
-        res.render('albums', { lyrics: songLyricsArray, artist: artist });
+        var songLyricsArray = lyricsStringArray(titlesString);
+        res.render('titles', { lyrics: songLyricsArray, artist: artist, pic: artistPic });
       } 
   }); 
 });
 
-
-
-
-
 router.post('/lyrics', function(req, res, next) {
-  var x = Xray();
-  var lyrics = '';
+  x = Xray();
+  artistArray = req.body.artistSearch.split(' ');
+  artist = artistArray.join('+');
+  songArray = req.body.songSearch.split(' ');
+  song = songArray.join('+');
 
-  var artistArray = req.body.artistSearch.split(' ');
-  var artist = artistArray.join('+');
-  var songArray = req.body.songSearch.split(' ');
-  var song = songArray.join('+');
-
-  console.log(req.body);
-  console.log(artistArray);
-
-  var url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
+  url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
   
-  x(url, '#songLyricsDiv')(function(err, lyricsh) {
-    lyrics = lyricsh;
-
-    function lyricsStringArray(str){    
-      stringArray = String(str).toLowerCase().replace("'", "").replace(/,/g, "").replace(/'/g, "").replace(/\W/g, ' ').split(' ');
-      return stringArray;
-    };
-
-    var songLyricsArray = lyricsStringArray(lyrics);
-    console.log(songLyricsArray);
+  x(url, '#songLyricsDiv')(function(err, lyrics) {      
+    songLyricsArray = lyrics.replace("'", "").replace(/,/g, "").replace(/'/g, "").replace(/\W/g, ' ').split(' ');
     res.render('lyrics', {lyrics: songLyricsArray, artist: artist, song: song});
   });
 });

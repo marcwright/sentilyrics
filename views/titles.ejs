@@ -15,8 +15,12 @@
   </head>
 <body>
   
-  <div><h1><%= artist.replace("+", " ").toUpperCase(); %> Song Titles</h1></div>
-  <a href="/">Search Again</a>
+  <div>
+  	<h1><%= artist.replace("+", " ").toUpperCase(); %> Song Titles</h1>
+  	<img src="<%= pic %>">
+  	<h3><a href="/">Search Again</a></h3>
+  </div>
+
   <div id="container" class="container">  
     <div id="main" role="main">
       <div id="vis"></div>
@@ -33,7 +37,6 @@
 
   <script>
     var lyrics = "<%= lyrics %>"
-    var artist = "<%= artist %>"
     
     console.log(lyrics);
   </script>
