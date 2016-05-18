@@ -20,8 +20,7 @@ router.post('/d3lyrics', function(req, res, next) {
   console.log(artistArray);
 
   var url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
-  var sa;
-
+  
   x(url, '#songLyricsDiv')(function(err, lyricsh) {
     lyrics = lyricsh;
 
@@ -30,9 +29,9 @@ router.post('/d3lyrics', function(req, res, next) {
       return stringArray;
     };
 
-    var sa = lyricsStringArray(lyrics);
-    console.log("post lyrics:   " + sa);
-    res.render('d3', {lyrics: sa, artist: artist, song: song});
+    var songLyricsArray = lyricsStringArray(lyrics);
+    console.log("post lyrics:   " + songLyricsArray);
+    res.render('d3', {lyrics: songLyricsArray, artist: artist, song: song});
 
   });
 });
