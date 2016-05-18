@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Word Frequency in Album Titles</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- CSS concatenated and minified via ant build script-->
+    <link rel="stylesheet" href="stylesheets/reset.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style_bubble.css">
+    <!-- end CSS-->
+
+    <script src="/javascripts/libs/modernizr-2.0.6.min.js"></script>
+
+
+  </head>
+<body>
+  
+  <div><h1><%= albums %></h1></div>
+  <a href="/">Search Again</a>
+  <div id="container" class="container">  
+    <div id="main" role="main">
+      <div id="vis"></div>
+      <div id="status"></div>
+      <div id="controls">
+        <h3>Jitter</h3>
+        <form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
+          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;">
+          <output name="output" for="input">0.5</output>
+        </form>
+      </div>
+    </div>   
+  </div> <!--! end of #container -->
+
+  <script>
+    var albums = "<%= albums %>"
+    
+    console.log(albums);
+  </script>
+ 
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="/javascripts/libs/papaparse.min.js"></script>
+  <script defer src="/javascripts/plugins.js"></script>
+  <script src="/javascripts/libs/coffee-script.js"></script>
+  <script src="/javascripts/libs/d3.min.js"></script>
+  <script src="/javascripts/vis.js"></script>
+  <script src="/javascripts/script.js"></script>
+</body>
+</html>

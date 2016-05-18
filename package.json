@@ -17,6 +17,7 @@
     "micromatch": "^2.3.7",
     "morgan": "~1.6.1",
     "papaparse": "^4.1.2",
+    "request": "^2.72.0",
     "serve-favicon": "~2.3.0",
     "underscore": "^1.8.3",
     "x-ray": "^2.0.3"
