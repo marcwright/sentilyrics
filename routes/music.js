@@ -9,15 +9,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/albums', function(req, res, next) {
-  var albums;
-
-  request.get({ url: "http://www.omdbapi.com/?t=batman&y=2005&plot=short&r=json" }, function(error, response, body) { 
-              if (!error && response.statusCode == 200) { 
-                  albums = body;
-                  console.log(albums);
-                  res.render('albums', { albums: albums });
-                 } 
-             }); 
+  request.get({ url: "https://api.musixmatch.com/ws/1.1/track.search?q_artist=taylor%20swift&f_has_lyrics=1&apikey=45f030feddac66fcfa2f9e9f659608c4" }, function(error, response, body) { 
+      if (!error && response.statusCode == 200) { 
+        albums = body;
+        console.log(albums);
+        res.render('albums', { albums: albums });
+      } 
+    }); 
 });
 
 router.post('/d3lyrics', function(req, res, next) {
