@@ -284,7 +284,6 @@
       location.replace("#");
       return location.search = encodeURIComponent(key);
     });
-    d3.select("#book-title").html(search);
     
     letters = d3.csv.parse(csv, function(d) { 
       return d
