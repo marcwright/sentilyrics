@@ -15,7 +15,7 @@
   </head>
 <body>
   
-  <div><h1><%= albums %></h1></div>
+  <div><h1>Word Frequency in <%= artist %>'s Album Titles</h1></div>
   <a href="/">Search Again</a>
   <div id="container" class="container">  
     <div id="main" role="main">
@@ -32,9 +32,10 @@
   </div> <!--! end of #container -->
 
   <script>
-    var albums = "<%= albums %>"
+    var lyrics = "<%= lyrics %>"
+    var artist = "<%= artist %>"
     
-    console.log(albums);
+    console.log(lyrics);
   </script>
  
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>

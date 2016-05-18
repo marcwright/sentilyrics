@@ -13,10 +13,16 @@
 
   </head>
 <body>
-  <h1>How frequently are words used in song titles?</h1>
+  <h1>How frequently are words used in a song lyric?</h1>
   <form action="/d3lyrics" method="post">
     <input type="text" placeholder="artist" id="searchCond" name="artistSearch"/>
     <input type="text" placeholder="song" id="searchCond" name="songSearch"/>
+    <button value="Submit" id="artistSearch">Search</button>
+  </form>
+
+  <h1>How frequently are words used in album titles?</h1>
+  <form action="/albums" method="post">
+    <input type="text" placeholder="artist" id="searchCond" name="artistSearch"/>
     <button value="Submit" id="artistSearch">Search</button>
   </form>
 

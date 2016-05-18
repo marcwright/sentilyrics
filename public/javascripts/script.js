@@ -1,5 +1,5 @@
-console.log("script has loaded");
-console.log(typeof lyrics);
+// console.log("script has loaded");
+// console.log(typeof lyrics);
 
     var search;
     var goodWordsArray = [];
@@ -70,7 +70,7 @@ console.log(typeof lyrics);
       };
 
       // grabs each track title, makes a long string, then an array of words
-      function titlesStringArray(){    
+      function titlesStringArray(lyrics){    
           // var str = array;
           // $.each(tracksArray, function(i, val){
           //   str += ' ' + val.track.track_name
@@ -175,7 +175,7 @@ console.log(typeof lyrics);
 
         renderBubbles(csv); //this function is in vis.js
       }
-      titlesStringArray();
+      titlesStringArray(lyrics);
       makeShitHappen();
 
 
