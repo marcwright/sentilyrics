@@ -2,8 +2,10 @@ var goodWordsArray = [];
 
 // remove basic words from array, pushes good words into goodArray[]
 function removeBasicWords(array){
-  $.each(array, function(i, val){
-    if (val !== 'the' && val !== " " && val !== "" && val !== 'of' && val !== 'and' && val !== 'a' && val.length > 1 && val !== "remix" && val !== "digital" && val !== "remastered"){
+  var badWordsArray = ['the', " ", "", 'of', 'and', 'a', "remix", "digital", "remastered"];
+
+  array.forEach(function(val){
+    if (badWordsArray.indexOf(val) == -1 && val.length > 1) {
       goodWordsArray.push(val);
     }
   });
@@ -37,7 +39,7 @@ function sortWordFrequency(obj){
     return a[1]-b[1]; // compare numbers
   });
   return sortable.reverse(); // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
-}
+};
 
 var makeShitHappen = function(){
   // Using Papa Parse to convert goodWordsArray to csv, setting headers

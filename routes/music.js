@@ -19,10 +19,10 @@ router.post('/titles', function(req, res, next) {
 
         pic = tracksArray[0].track.album_coverart_100x100
         artistPic = (pic == "http://s.mxmcdn.net/images/albums/nocover.png") ? tracksArray[1].track.album_coverart_100x100 : tracksArray[0].track.album_coverart_100x100
-        
+
         titlesString = '';
 
-        tracksArray.forEach(function(val, i){
+        tracksArray.forEach(function(val){
           titlesString += ' ' + val.track.track_name;
         });
 
