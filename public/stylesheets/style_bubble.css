@@ -2,6 +2,10 @@ body {
   font-size: 18px;
 }
 
+legend {
+  margin-bottom: 0px;
+}
+
 .pos{
   /*color: green;*/
   border: 3px green solid;

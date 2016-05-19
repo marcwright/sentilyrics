@@ -53,3 +53,39 @@ var makeShitHappen = function(){
 
 titlesStringArray(lyrics);
 makeShitHappen();
+
+
+//Sentiment Code
+$(window).load(function () {
+
+  $('.bubble-label-name').each(function(index, val) {
+    if (posWordsArray.indexOf($(this).text()) > -1) {
+      var parentAttr = $(this).parent().attr('href');
+      $('.bubble-node').each(function(){
+        if ($(this).attr('href') == parentAttr){
+          console.log("match" + $(this).attr('href'));
+          $(this).css("fill", "rgba(81,163,81,0.22)")
+          
+          // $('svg').css('background-color', "rgba(81,163,81,0.22)")
+        }
+      });
+    } else if(negWordsArray.indexOf($(this).text()) > -1) {
+      var parentAttr = $(this).parent().attr('href');
+      $('.bubble-node').each(function(){
+        if ($(this).attr('href') == parentAttr){
+          console.log("match" + $(this).attr('href'));
+          $(this).css("fill", "rgba(255,0,0,0.22)")
+          
+          // $('svg').css('background-color', "rgba(255,0,0,0.22)")
+        }
+      });
+    }
+  });
+
+  if (parseInt(overallScore) > -1) {
+    $('#vis').addClass('pos');
+  } else {
+    $('#vis').addClass('neg');
+  }
+
+});

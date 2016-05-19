@@ -47,16 +47,6 @@ router.post('/lyrics', function(req, res, next) {
   songArray = req.body.songSearch.split(' ');
   song = songArray.join('+');
 
-
-  // neg = analyze("Hey you worthless scumbag"); //Score: -6, Comparative:-1.5
-  // console.log(neg);
-  // positivity("This is so cool"); //Score: 1, Comparative:.25
-  // negativity("Hey you worthless scumbag"); //Score: 6, Comparative:1.5
-  // analyze("I am happy"); //Score: 3, Comparative: 1
-  // analyze("I am so happy"); //Score: 6, Comparative: 1.5
-  // analyze("I am extremely happy"); //Score: 12, Comparative: 3
-  // analyze("I am really sad"); //Score: -4, Comparative: -1
-
   url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
   
   x(url, '#songLyricsDiv')(function(err, lyrics) {

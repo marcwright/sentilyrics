@@ -16,7 +16,7 @@
   </head>
 <body>
   
-  <div><h1><strong><%= artist.replace("+", " ").toUpperCase(); %></strong> <%= song.replace(/\+/g, " ").toUpperCase(); %></h1></div>
+  <div><h1><strong><%= artist.replace("+", " ").toUpperCase(); %></strong> / <%= song.replace(/\+/g, " ").toUpperCase(); %></h1></div>
   <a href="/" class="btn btn-warning btn-sm">Search Again</a>
   <div id="container" class="container">  
     <div id="main" role="main">
@@ -45,15 +45,6 @@
   </div> <!--! end of #container -->
 
 
-  
-  <!-- <div><strong>Positive Words:</strong> <%= posWordsArray %></div>
-  <div><strong>Positive Senti Score:</strong> <%= posScore %></div>
-  <div><strong>Negative Words:</strong> <%= negWordsArray %></div>
-  <div><strong>Negative Senti Score:</strong> <%= negScore %></div>
-  <div><strong>Overall Senti Score:</strong>  <%= overallScore %></div> -->
-
-
-
   <script>
     var lyrics = "<%= lyrics %>"
     var posWords = "<%= posWordsArray %>"
@@ -61,46 +52,6 @@
     var posWordsArray = posWords.split(",");
     var negWordsArray = negWords.split(",");
     var overallScore = "<%= overallScore %>"
-
-    $(window).load(function () {
-
-      $('.bubble-label-name').each(function(index, val) {
-        if (posWordsArray.indexOf($(this).text()) > -1) {
-          var parentAttr = $(this).parent().attr('href');
-          $('.bubble-node').each(function(){
-            if ($(this).attr('href') == parentAttr){
-              console.log("match" + $(this).attr('href'));
-              $(this).css("fill", "rgba(81,163,81,0.22)")
-              
-              // $('svg').css('background-color', "rgba(81,163,81,0.22)")
-            }
-          });
-
-          // var search = "a[href$='" + parentAttr + "']";
-          // console.log(parentAttr, search);
-          // $('"' + search + '"').addClass("bubble-new");
-        } else if (negWordsArray.indexOf($(this).text()) > -1) {
-          var parentAttr = $(this).parent().attr('href');
-          $('.bubble-node').each(function(){
-            if ($(this).attr('href') == parentAttr){
-              console.log("match" + $(this).attr('href'));
-              $(this).css("fill", "rgba(255,0,0,0.22)")
-              
-              // $('svg').css('background-color', "rgba(255,0,0,0.22)")
-            }
-          });
-        }
-      });
-
-      if (parseInt(overallScore) > -1) {
-        $('#vis').addClass('pos');
-      } else {
-        $('#vis').addClass('neg');
-      }
-
-
-    });
-
     
   </script>
  
