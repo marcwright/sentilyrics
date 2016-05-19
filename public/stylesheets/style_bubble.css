@@ -1,5 +1,7 @@
 body {
   font-size: 18px;
+  text-align:center;
+  padding: 50px;
 }
 
 legend {
@@ -8,12 +10,12 @@ legend {
 
 .pos{
   /*color: green;*/
-  border: 3px green solid;
+  border: 2px green solid;
 }
 
 .neg {
   /*color: red;*/
-  border: 3px red solid;
+  border: 2px red solid;
 }
 
   
