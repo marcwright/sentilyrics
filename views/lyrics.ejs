@@ -1,66 +1,59 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>Word Frequency in Song Titles</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <!-- CSS concatenated and minified via ant build script-->
-    <link rel="stylesheet" href="stylesheets/reset.css">
-    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/style_bubble.css">
-    <!-- end CSS-->
-
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script src="/javascripts/libs/modernizr-2.0.6.min.js"></script>
-
-
+    <% include partials/head %>
   </head>
-<body>
-  
-  <div><h1><strong><%= artist.replace("+", " ").toUpperCase(); %></strong> / <%= song.replace(/\+/g, " ").toUpperCase(); %></h1></div>
-  <a href="/" class="btn btn-warning btn-sm">Search Again</a>
-  <div id="container" class="container">  
-    <div id="main" role="main">
-      <div id="vis"></div>
-      <div id="status"></div>
-      <div id="controls" class="col-lg-10">
-        <h3>Jitter</h3>
-        <form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
-          <input id="jitter_input" type="range" min="0" max="400" value="100">
-          <output name="output" for="input" style="width:100px;float:right;font-size:40px;margin-top:-35px">0.5</output>
-        </form>
-      </div>
-      <div style="clear:both"></div>
-      <div id="results">
-        <ul style="list-style: none">
-          <li><strong>Positive Senti Score:</strong> <%= posScore %></li>
-          <li><em><%= posWordsArray %></em></li>
-          
-          <li><strong>Negative Senti Score:</strong> <%= negScore %></li>
-          <li style="overflow:hidden"><em><%= negWordsArray %></em></li>
-          
-          <li><strong>Overall Senti Score:</strong>  <%= overallScore %></li>
-        </ul>
-      </div>
-    </div>   
-  </div> <!--! end of #container -->
+  <body>
 
-
-  <script>
-    var lyrics = "<%= lyrics %>"
-    var posWords = "<%= posWordsArray %>"
-    var negWords = "<%= negWordsArray %>"
-    var posWordsArray = posWords.split(",");
-    var negWordsArray = negWords.split(",");
-    var overallScore = "<%= overallScore %>"
+    <header>
+      <% include partials/header %>
+    </header>
     
-  </script>
- 
-  
-  <script src="/javascripts/libs/papaparse.min.js"></script>
-  <script defer src="/javascripts/plugins.js"></script>
-  <script src="/javascripts/libs/coffee-script.js"></script>
-  <script src="/javascripts/libs/d3.min.js"></script>
-  <script src="/javascripts/vis.js"></script>
-  <script src="/javascripts/script.js"></script>
-</body>
+    <div><h1><strong><%= artist.replace("+", " ").toUpperCase(); %></strong> / <%= song.replace(/\+/g, " ").toUpperCase(); %></h1></div>
+
+    <div id="container" class="container">  
+      <div id="main" role="main">
+        <div id="vis"></div>
+        <div id="status"></div>
+        <div id="controls" class="col-lg-10">
+          <h3>Jitter</h3>
+          <form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
+            <input id="jitter_input" type="range" min="0" max="400" value="100">
+            <output name="output" for="input" style="width:100px;float:right;font-size:40px;margin-top:-35px">0.5</output>
+          </form>
+        </div>
+        <div style="clear:both"></div>
+        <div id="results">
+          <ul style="list-style: none">
+            <li><strong>Positive Senti Score:</strong> <%= posScore %></li>
+            <li class="text-success"><em><%= posWordsArray %></em></li>
+            
+            <li><strong>Negative Senti Score:</strong> <%= negScore %></li>
+            <li class="text-danger" style="overflow:hidden"><em><%= negWordsArray %></em></li>
+            
+            <li><strong>Overall Senti Score:</strong>  <span class="overall"><%= overallScore %></span></li>
+          </ul>
+        </div>
+      </div>   
+    </div> <!--! end of #container -->
+
+
+    <script>
+      var lyrics = "<%= lyrics %>"
+      var posWords = "<%= posWordsArray %>"
+      var negWords = "<%= negWordsArray %>"
+      var posWordsArray = posWords.split(",");
+      var negWordsArray = negWords.split(",");
+      var overallScore = "<%= overallScore %>"      
+    </script>
+   
+    
+    <script src="/javascripts/libs/papaparse.min.js"></script>
+    <script defer src="/javascripts/plugins.js"></script>
+    <script src="/javascripts/libs/coffee-script.js"></script>
+    <script src="/javascripts/libs/d3.min.js"></script>
+    <script src="/javascripts/vis.js"></script>
+    <script src="/javascripts/script.js"></script>
+  </body>
 </html>

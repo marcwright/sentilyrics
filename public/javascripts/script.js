@@ -84,8 +84,10 @@ $(window).load(function () {
 
   if (parseInt(overallScore) > -1) {
     $('#vis').addClass('pos');
+    $('.overall').addClass('text-success');
   } else {
     $('#vis').addClass('neg');
+    $('.overall').addClass('text-danger');
   }
 
 });
