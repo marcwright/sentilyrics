@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="stylesheets/style_bubble.css">
     <!-- end CSS-->
 
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="/javascripts/libs/modernizr-2.0.6.min.js"></script>
 
 
@@ -42,11 +43,26 @@
 
   <script>
     var lyrics = "<%= lyrics %>"
+    var posWords = "<%= posWordsArray %>"
+    var posWordsArray = posWords.split(",");
 
+
+    $(window).load(function () {
+      // var bubbles = $('.bubble-label-name')[0].text();
+      $('.bubble-label-name').each(function(){
+        var val = $(this).text()
+        
+        if (posWordsArray.indexOf(val) == -1) {
+          console.log("Positive!");
+        }
+      });
+    });
+
+    console.log(posWordsArray);
     
   </script>
  
-  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  
   <script src="/javascripts/libs/papaparse.min.js"></script>
   <script defer src="/javascripts/plugins.js"></script>
   <script src="/javascripts/libs/coffee-script.js"></script>
