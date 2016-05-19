@@ -1,6 +1,18 @@
-
 body {
+  font-size: 18px;
 }
+
+.pos{
+  /*color: green;*/
+  border: 3px green solid;
+}
+
+.neg {
+  /*color: red;*/
+  border: 3px red solid;
+}
+
+  
 
 a, a:visited {
   color:#333;
@@ -11,10 +23,11 @@ a, a:visited {
 }
 
 #container {
-  padding-top:20px;
-  width: 980px;
-  border-left: 2px #ddd solid;
-  border-right: 2px #ddd solid;
+  /*padding-top:20px;*/
+  width: 1100px;
+  border: 2px #ddd solid;
+  /*border-right: 2px #ddd solid;*/
+  /*background-color: yellow;*/
 }
 
 header {
@@ -36,17 +49,32 @@ header {
 #vis {
   overflow: hidden;
   position: relative;
+  width: 1095px;
+  height: 510px;
+  /*border: 2px green solid;*/
 }
 
 #status {
-  padding:0 0 20px 20px;
+  padding:0 0 10px 10px;
 }
 
 #controls {
-  padding: 20px;
+  /*padding: 5px;*/
   background-color: #eee;
-  margin: 10px;
-  /*width: 350px;*/
+  margin: 5px;
+  width: 1090px;
+  height: 50px;
+  /*float: left;*/
+}
+
+#results {
+  padding: 10px;
+  background-color: #eee;
+  margin: 5px;
+  width: 1070px;
+  text-align: left;
+  height: 130px;
+  /*float: right;*/
 }
 
 #bubble-background {
@@ -71,7 +99,7 @@ header {
 
 .bubble-selected {
   /* fill: #a8c8ee;  */
-  fill: #CEE98F;
+  fill: #FFE98F;
   /* stroke: #6081a3; */
   stroke: #A6BA92;
   stroke-width: 1.5px;
@@ -82,7 +110,7 @@ header {
 }
 
 a.bubble-label {
-  font-family: georgia, "times new roman", times, serif;
+  font-family: arial, georgia, "times new roman", times, serif;
   color: inherit;
   cursor: pointer;
   display: block;

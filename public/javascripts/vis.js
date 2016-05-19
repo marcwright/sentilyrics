@@ -8,8 +8,8 @@
 
   Bubbles = function() {
     var chart, clear, click, collide, collisionPadding, connectEvents, data, force, gravity, hashchange, height, idValue, jitter, label, margin, maxRadius, minCollisionRadius, mouseout, mouseover, node, rScale, rValue, textValue, tick, transformData, update, updateActive, updateLabels, updateNodes, width;
-    width = 980;
-    height = 510;
+    width = 1100;
+    height = 520;
     data = [];
     node = null;
     label = null;
@@ -19,7 +19,7 @@
       bottom: 0,
       left: 0
     };
-    maxRadius = 65;
+    maxRadius = 70;
     rScale = d3.scale.sqrt().range([0, maxRadius]);
     rValue = function(d) {
       return parseInt(d.count);

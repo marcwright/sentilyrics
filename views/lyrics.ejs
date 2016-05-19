@@ -25,19 +25,30 @@
       <div id="controls">
         <h3>Jitter</h3>
         <form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
-          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;">
+          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:980px;">
           <output name="output" for="input">0.5</output>
         </form>
+      </div>
+      <div id="results">
+        <ul style="list-style: none">
+          <li><strong>Positive Senti Score:</strong> <%= posScore %></li>
+          <li><em><%= posWordsArray %></em></li><br>
+          
+          <li><strong>Negative Senti Score:</strong> <%= negScore %></li>
+          <li><em><%= negWordsArray %></em></li><br>
+          
+          <li><strong>Overall Senti Score:</strong>  <%= overallScore %></li>
+        </ul>
       </div>
     </div>   
   </div> <!--! end of #container -->
 
   
-  <div><strong>Positive Words:</strong> <%= posWordsArray %></div>
+  <!-- <div><strong>Positive Words:</strong> <%= posWordsArray %></div>
   <div><strong>Positive Senti Score:</strong> <%= posScore %></div>
   <div><strong>Negative Words:</strong> <%= negWordsArray %></div>
   <div><strong>Negative Senti Score:</strong> <%= negScore %></div>
-  <div><strong>Overall Senti Score:</strong>  <%= overallScore %></div>
+  <div><strong>Overall Senti Score:</strong>  <%= overallScore %></div> -->
 
 
 
@@ -47,6 +58,7 @@
     var negWords = "<%= negWordsArray %>"
     var posWordsArray = posWords.split(",");
     var negWordsArray = negWords.split(",");
+    var overallScore = "<%= overallScore %>"
 
     $(window).load(function () {
 
@@ -56,7 +68,9 @@
           $('.bubble-node').each(function(){
             if ($(this).attr('href') == parentAttr){
               console.log("match" + $(this).attr('href'));
-              $(this).css("fill", "green")
+              $(this).css("fill", "rgba(81,163,81,0.22)")
+              
+              // $('svg').css('background-color', "rgba(81,163,81,0.22)")
             }
           });
 
@@ -68,11 +82,21 @@
           $('.bubble-node').each(function(){
             if ($(this).attr('href') == parentAttr){
               console.log("match" + $(this).attr('href'));
-              $(this).css("fill", "red")
+              $(this).css("fill", "rgba(255,0,0,0.22)")
+              
+              // $('svg').css('background-color', "rgba(255,0,0,0.22)")
             }
           });
         }
       });
+
+      if (parseInt(overallScore) > -1) {
+        $('#vis').addClass('pos');
+      } else {
+        $('#vis').addClass('neg');
+      }
+
+
     });
 
     
