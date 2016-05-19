@@ -55,7 +55,7 @@ titlesStringArray(lyrics);
 makeShitHappen();
 
 
-//Sentiment Code
+//SENTIMENT CODE
 $(window).load(function () {
 
   $('.bubble-label-name').each(function(index, val) {
@@ -73,7 +73,7 @@ $(window).load(function () {
       var parentAttr = $(this).parent().attr('href');
       $('.bubble-node').each(function(){
         if ($(this).attr('href') == parentAttr){
-          console.log("match" + $(this).attr('href'));
+          // console.log("match" + $(this).attr('href'));
           $(this).css("fill", "rgba(255,0,0,0.22)")
           
           // $('svg').css('background-color', "rgba(255,0,0,0.22)")
