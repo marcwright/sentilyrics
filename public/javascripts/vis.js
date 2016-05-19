@@ -19,7 +19,7 @@
       bottom: 0,
       left: 0
     };
-    maxRadius = 70;
+    maxRadius = 80;
     rScale = d3.scale.sqrt().range([0, maxRadius]);
     rValue = function(d) {
       return parseInt(d.count);

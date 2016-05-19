@@ -14,17 +14,58 @@
   </head>
 <body>
   <h1>What words are used in song...</h1>
-  <h2>lyrics?</h2>
+  <!-- <h2>lyrics?</h2>
   <form action="/lyrics" method="post">
     <input type="text" placeholder="artist" id="searchCond" name="artistSearch"/>
     <input type="text" placeholder="song" id="searchCond" name="songSearch"/>
     <button value="Submit" id="artistSearch">Search</button>
+  </form> -->
+
+
+  <form class="form-horizontal" action="/lyrics" method="post">
+    <fieldset>
+      <legend>Song Lyrics</legend>
+      <div class="form-group" col-lg-offset-2>
+        <label for="inputEmail" class="col-lg-1 control-label">Artist</label>
+        <div class="col-lg-2">
+          <input type="text" class="form-control" for="focusedInput" id="searchCond" name="artistSearch" placeholder="enter artist">
+        </div>
+        <label for="inputEmail" class="col-lg-1 control-label">Song</label>
+        <div class="col-lg-2">
+          <input type="text" class="form-control" for="focusedInput" id="searchCond" name="artistSearch" placeholder="enter song">
+        </div>
+        <div class="form-group">
+          <div class="col-lg-2">
+            <button type="submit" id="artistSearch" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </div>     
+    </fieldset>
   </form>
 
-  <h2>titles?</h2>
-  <form action="/titles" method="post">
+  <!-- <h2>titles?</h2> -->
+  <!-- <form action="/titles" method="post">
     <input type="text" placeholder="artist" id="searchCond" name="artistSearch"/>
     <button value="Submit" id="artistSearch">Search</button>
+  </form> -->
+
+  <form class="form-horizontal" action="/titles" method="post">
+    <fieldset>
+      <legend>Album Titles</legend>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Artist</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" for="focusedInput" id="searchCond" name="artistSearch" placeholder="enter artist">
+        </div>
+      </div>
+     
+      
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="submit" id="artistSearch" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </fieldset>
   </form>
 
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>

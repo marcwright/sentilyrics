@@ -16,32 +16,34 @@
   </head>
 <body>
   
-  <div><h1><%= artist.replace("+", " ").toUpperCase(); %> - <%= song.replace(/\+/g, " ").toUpperCase(); %></h1></div>
+  <div><h1><strong><%= artist.replace("+", " ").toUpperCase(); %></strong> <%= song.replace(/\+/g, " ").toUpperCase(); %></h1></div>
   <a href="/">Search Again</a>
   <div id="container" class="container">  
     <div id="main" role="main">
       <div id="vis"></div>
       <div id="status"></div>
-      <div id="controls">
+      <div id="controls" class="col-lg-10">
         <h3>Jitter</h3>
         <form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
-          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:980px;">
-          <output name="output" for="input">0.5</output>
+          <input id="jitter_input" type="range" min="0" max="400" value="100">
+          <output name="output" for="input" style="width:100px;float:right;font-size:40px;margin-top:-35px">0.5</output>
         </form>
       </div>
+      <div style="clear:both"></div>
       <div id="results">
         <ul style="list-style: none">
           <li><strong>Positive Senti Score:</strong> <%= posScore %></li>
-          <li><em><%= posWordsArray %></em></li><br>
+          <li><em><%= posWordsArray %></em></li>
           
           <li><strong>Negative Senti Score:</strong> <%= negScore %></li>
-          <li style="overflow:hidden"><em><%= negWordsArray %></em></li><br>
+          <li style="overflow:hidden"><em><%= negWordsArray %></em></li>
           
           <li><strong>Overall Senti Score:</strong>  <%= overallScore %></li>
         </ul>
       </div>
     </div>   
   </div> <!--! end of #container -->
+
 
   
   <!-- <div><strong>Positive Words:</strong> <%= posWordsArray %></div>
