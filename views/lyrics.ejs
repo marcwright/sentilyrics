@@ -44,21 +44,37 @@
   <script>
     var lyrics = "<%= lyrics %>"
     var posWords = "<%= posWordsArray %>"
+    var negWords = "<%= negWordsArray %>"
     var posWordsArray = posWords.split(",");
-
+    var negWordsArray = negWords.split(",");
 
     $(window).load(function () {
-      // var bubbles = $('.bubble-label-name')[0].text();
-      $('.bubble-label-name').each(function(){
-        var val = $(this).text()
-        
-        if (posWordsArray.indexOf(val) == -1) {
-          console.log("Positive!");
+
+      $('.bubble-label-name').each(function(index, val) {
+        if (posWordsArray.indexOf($(this).text()) > -1) {
+          var parentAttr = $(this).parent().attr('href');
+          $('.bubble-node').each(function(){
+            if ($(this).attr('href') == parentAttr){
+              console.log("match" + $(this).attr('href'));
+              $(this).css("fill", "green")
+            }
+          });
+
+          // var search = "a[href$='" + parentAttr + "']";
+          // console.log(parentAttr, search);
+          // $('"' + search + '"').addClass("bubble-new");
+        } else if (negWordsArray.indexOf($(this).text()) > -1) {
+          var parentAttr = $(this).parent().attr('href');
+          $('.bubble-node').each(function(){
+            if ($(this).attr('href') == parentAttr){
+              console.log("match" + $(this).attr('href'));
+              $(this).css("fill", "red")
+            }
+          });
         }
       });
     });
 
-    console.log(posWordsArray);
     
   </script>
  

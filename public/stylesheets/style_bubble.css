@@ -55,8 +55,13 @@ header {
 }
 
 .bubble-node {
-  /* fill: #d1e0f3; */
-  fill: #DCE9BE;
+   fill: #d1e0f3; 
+  /*fill: #DCE9BE;*/
+}
+
+.bubble-new {
+   fill: red; 
+  /*fill: #DCE9BE;*/
 }
 
 .bubble-hover {
