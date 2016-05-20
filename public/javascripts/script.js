@@ -59,17 +59,17 @@ makeShitHappen();
 $(window).load(function () {
 
   $('.bubble-label-name').each(function(index, val) {
-    if (posWordsArray.indexOf($(this).text()) > -1) {
+    if (posWords.indexOf($(this).text()) > -1) {
       var parentAttr = $(this).parent().attr('href');
       $('.bubble-node').each(function(){
         if ($(this).attr('href') == parentAttr){
-          console.log("match" + $(this).attr('href'));
+          // console.log("match" + $(this).attr('href'));
           $(this).css("fill", "rgba(81,163,81,0.22)")
           
           // $('svg').css('background-color', "rgba(81,163,81,0.22)")
         }
       });
-    } else if(negWordsArray.indexOf($(this).text()) > -1) {
+    } else if(negWords.indexOf($(this).text()) > -1) {
       var parentAttr = $(this).parent().attr('href');
       $('.bubble-node').each(function(){
         if ($(this).attr('href') == parentAttr){
@@ -82,12 +82,29 @@ $(window).load(function () {
     }
   });
 
+  console.log(overallScore);
+
   if (parseInt(overallScore) > -1) {
     $('#vis').addClass('pos');
-    $('.overall').addClass('text-success');
+    $('#overall').css('color', 'green');
   } else {
     $('#vis').addClass('neg');
-    $('.overall').addClass('text-danger');
+    $('#overall').css('color', 'red');;
   }
 
+  //remove duplicate words from sentiment pos/neg words arrays
+  function editArray(array){
+    var editedArray = [];
+    
+    array.forEach(function(val){
+      if (editedArray.indexOf(val) == -1){
+        editedArray.push(val);
+        console.log(val);      
+      }
+    });
+    return editedArray;
+  };
+
+  $('#posWords').text(editArray(posWords));
+  $('#negWords').text(editArray(negWords));
 });

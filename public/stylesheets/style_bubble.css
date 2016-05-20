@@ -4,6 +4,10 @@ body {
   padding: 50px;
 }
 
+li {
+  overflow:hidden
+}
+
 legend {
   margin-bottom: 0px;
 }
@@ -16,9 +20,7 @@ legend {
 .neg {
   /*color: red;*/
   border: 2px red solid;
-}
-
-  
+}  
 
 a, a:visited {
   color:#333;
@@ -28,19 +30,15 @@ a, a:visited {
   margin-bottom: 10px;
 }
 
-
 #container {
   margin-top: 5px;
-  width: 1100px;
-  border: 2px #ddd solid;
-  /*border-right: 2px #ddd solid;*/
-  /*background-color: yellow;*/
+  width: 1067px;
+  border: 2px;
 }
 
 header {
   padding: 10px;
 }
-
 
 #text-select {
   float:right;
@@ -50,47 +48,55 @@ header {
 #vis {
   overflow: hidden;
   position: relative;
-  width: 1097px;
+  /*width: 1067px;*/
   height: 510px;
-   margin-left:-15px;
-  margin-right:-17px;
-  /*border: 2px green solid;*/
 }
 
 #status {
   padding:0 0 5px 5px;
 }
 
-#controls {
-  /*padding: 5px;*/
-  background-color: #eee;
-  margin-left: -11px;
-  width: 1090px;
-  height: 100px;
-  /*float: left;*/
+.panel {
+  margin-top: -10px;
 }
 
-/*.form-control{
-  width: 50%;
-}*/
+.panel-short {
+  height: 100px;
+  width: 516px;
+  float:left;
+}
 
-#jitter {
+.panel-title {
+  font-size: 24px
+}
 
+.panel-body {
+  height: 40px;
+  padding: 7px 0 0 0;
 }
 
 input#jitter_input {
-  width:950px;
+  width:390px;
   float: left;
+  margin: 10px 0 0 16px;
+}
+
+output#jitter_output {
+  width:30px;
+  float: right;
+  margin: -22px 65px 0 0 ;
+  font-size:40px;
 }
 
 #results {
   padding: 10px;
-  background-color: #eee;
+  /*background-color: #eee;*/
   margin-top: 5px;
   margin-left: -11px;
   width: 1090px;
   text-align: left;
   height: 150px;
+  font-size: 24px;
   /*float: right;*/
 }
 
@@ -136,7 +142,6 @@ a.bubble-label {
   line-height: 1em;
   position: absolute;
 }
-
 
 .bubble-label .bubble-label-value {
   font: 11px sans-serif;

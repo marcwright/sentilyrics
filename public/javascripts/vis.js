@@ -8,7 +8,7 @@
 
   Bubbles = function() {
     var chart, clear, click, collide, collisionPadding, connectEvents, data, force, gravity, hashchange, height, idValue, jitter, label, margin, maxRadius, minCollisionRadius, mouseout, mouseover, node, rScale, rValue, textValue, tick, transformData, update, updateActive, updateLabels, updateNodes, width;
-    width = 1100;
+    width = 1067;
     height = 520;
     data = [];
     node = null;

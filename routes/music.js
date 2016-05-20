@@ -57,9 +57,9 @@ router.post('/lyrics', function(req, res, next) {
       lyrics: songLyricsArray, 
       artist: artist, 
       song: song, 
-      posWordsArray: sentiResults.positive.words, 
+      posWordsString: sentiResults.positive.words, 
       posScore: sentiResults.positive.score,
-      negWordsArray: sentiResults.negative.words, 
+      negWordsString: sentiResults.negative.words, 
       negScore: sentiResults.negative.score,
       overallScore: sentiResults.score
     });
