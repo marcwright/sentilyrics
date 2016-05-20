@@ -6,8 +6,9 @@
 
     <!-- <h1>What words are used in song...</h1> -->
    
-    <div class="col-lg-6 col-lg-offset-4" id="lyricsSearchForm" style="display:none">
-      <form class="form-horizontal col-lg-6" action="/lyrics" method="post">
+   <div id="startDiv" style="display:none">
+    <div class="col-lg-3 col-lg-offset-4" id="lyricsSearchForm">
+      <form class="form-horizontal col-lg-12" action="/lyrics" method="post">
         <fieldset>
           <legend>Song Lyric Sentiment</legend>
           <div class="form-group">
@@ -23,16 +24,16 @@
             </div>
           </div>
           <div class="form-group">
-            <div class="col-lg-2 col-lg-offset-4">
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="col-lg-2">
+              <button type="submit" class="btn btn-primary btn-sm">Submit</button>
             </div>
           </div>          
         </fieldset>
       </form>
     </div>
 
-    <div class="col-lg-6 col-lg-offset-4" id="songTitleSearchForm" style="display:none">
-      <form class="form-horizontal col-lg-6" action="/titles" method="post">
+    <div class="col-lg-3 col-lg-offset-4" id="songTitleSearchForm" style="display:none">
+      <form class="form-horizontal col-lg-12" action="/titles" method="post">
         <fieldset>
           <legend>Artist Song Titles Sentiment</legend>
           <div class="form-group">
@@ -49,39 +50,49 @@
           </div>
           <div class="form-group">
             <div class="col-lg-2 col-lg-offset-4">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary btn-sm">Submit</button>
             </div>
           </div>          
         </fieldset>
       </form>
     </div>
+    
+    <div id="formButtonsDiv" class="col-lg-3 col-lg-offset-4">
+      <div class="btn-group btn-group-justified">
+        <a href="#" id="loadLyricsFormButton" class="btn btn-success btn-lg" style="border: 5px solid white">Search Lyrics</a>
+        <a href="#" id="loadSongTitlesFormButton" class="btn btn-success btn-lg" style="border: 5px solid white">Search Titles</a>
+      </div>
+    </div>
+  </div>
 
     <div class="jumbotron">
       <h1>SentiLyrics</h1>
       <p>Sentiment analysis on a song lyric or an artist's song titles</p>
-      <a href="#" id="loadLyricsFormButton" class="btn btn-success btn-lg">Lyrics</a>
-      <a href="#" id="loadSongTitlesFormButton" class="btn btn-success btn-lg">Song Titles</a>
+      <!-- <a href="#" id="loadLyricsFormButton" class="btn btn-success btn-lg">Lyrics</a>
+      <a href="#" id="loadSongTitlesFormButton" class="btn btn-success btn-lg">Song Titles</a> -->
+      <a href="#" id="startButton" class="btn btn-success btn-lg">Get Started</a>
     </div>   
 
-    <div id="formButtonsDiv" class="col-lg-3 col-lg-offset-4" style="display:none">
-      <div class="btn-group btn-group-justified">
-        <a href="#" id="loadLyricsFormButton" class="btn btn-success btn-lg">Lyrics</a>
-        <a href="#" id="loadSongTitlesFormButton" class="btn btn-success btn-lg">Song Titles</a>
-      </div>
-    </div>
 
     <script type="text/javascript">
+    $('#startButton').on('click', function(){
+      console.log("hello");
+      $('.jumbotron').hide();
+      $('#startDiv').show();
+    })
+
+
       $('#loadLyricsFormButton').on('click', function(){
-        $('.jumbotron').hide();
+        // $('.jumbotron').hide();
         $('#lyricsSearchForm').show();
-        $('#formButtonsDiv').show();
+        // $('#formButtonsDiv').show();
         $('#songTitleSearchForm').hide();
       });
 
       $('#loadSongTitlesFormButton').on('click', function(){
-        $('.jumbotron').hide();
+        // $('.jumbotron').hide();
         $('#songTitleSearchForm').show();
-        $('#formButtonsDiv').show();
+        // $('#formButtonsDiv').show();
         $('#lyricsSearchForm').hide();
       });
 
