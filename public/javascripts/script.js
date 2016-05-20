@@ -64,7 +64,7 @@ $(window).load(function () {
       $('.bubble-node').each(function(){
         if ($(this).attr('href') == parentAttr){
           // console.log("match" + $(this).attr('href'));
-          $(this).css("fill", "rgba(81,163,81,0.22)")
+          $(this).css("fill", "rgba(81,163,81,0.5)")
           
           // $('svg').css('background-color', "rgba(81,163,81,0.22)")
         }
