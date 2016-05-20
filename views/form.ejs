@@ -53,7 +53,7 @@
               </div>
             </div>
             <div class="form-group">
-              <div class="col-lg-2 col-lg-offset-4">
+              <div class="col-lg-2">
                 <button type="submit" class="btn btn-primary btn-sm">Submit</button>
               </div>
             </div>          
@@ -63,8 +63,8 @@
       
       <div id="formButtonsDiv" class="col-lg-3 col-lg-offset-4">
         <div class="btn-group btn-group-justified">
-          <a href="#" id="loadLyricsFormButton" class="btn btn-success btn-lg" style="border: 5px solid white">Search Lyrics</a>
-          <a href="#" id="loadSongTitlesFormButton" class="btn btn-success btn-lg" style="border: 5px solid white">Search Titles</a>
+          <a href="#" id="loadLyricsFormButton" class="btn btn-default btn-lg">Search Lyrics</a>
+          <a href="#" id="loadSongTitlesFormButton" class="btn btn-default btn-lg">Search Titles</a>
         </div>
       </div>
     </div>
@@ -79,39 +79,32 @@
     <script type="text/javascript">
     var error = "<%= error %>"
 
+    //FORM LOADING CODE
+    //if search is unsuccessful from POST /lyrics, then display error message
     if (error == "error") {
       $('#errorAlertMessage').show();
-    }
+    };
 
-    $('#alertLinkId').on('click', function(){
-      $('.jumbotron').hide();
-      $('#startDiv').show();
-      $('#errorAlertMessage').hide();
-    });
-
-
-    $('#startButton').on('click', function(){
-      console.log("hello");
-      $('.jumbotron').hide();
-      $('#startDiv').show();
-      $('#errorAlertMessage').hide();
-    })
+    //clears jumbotron and error message
+    $('#alertLinkId').on('click', hideJumbotron);
+    $('#startButton').on('click', hideJumbotron);
 
 
     $('#loadLyricsFormButton').on('click', function(){
-      // $('.jumbotron').hide();
       $('#lyricsSearchForm').show();
-      // $('#formButtonsDiv').show();
       $('#songTitleSearchForm').hide();
     });
 
     $('#loadSongTitlesFormButton').on('click', function(){
-      // $('.jumbotron').hide();
       $('#songTitleSearchForm').show();
-      // $('#formButtonsDiv').show();
       $('#lyricsSearchForm').hide();
     });
 
+    function hideJumbotron() {
+      $('.jumbotron').hide();
+      $('#startDiv').show();
+      $('#errorAlertMessage').hide();
+    }    
     </script>
 
   </body>

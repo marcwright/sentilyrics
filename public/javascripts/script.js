@@ -69,20 +69,14 @@ if (lyrics.indexOf('GOOG_FIXURL_LANG') > -1){
       var parentAttr = $(this).parent().attr('href');
       $('.bubble-node').each(function(){
         if ($(this).attr('href') == parentAttr){
-          // console.log("match" + $(this).attr('href'));
           $(this).css("fill", "rgba(81,163,81,0.5)")
-          
-          // $('svg').css('background-color', "rgba(81,163,81,0.22)")
         }
       });
     } else if(negWords.indexOf($(this).text()) > -1) {
       var parentAttr = $(this).parent().attr('href');
       $('.bubble-node').each(function(){
         if ($(this).attr('href') == parentAttr){
-          // console.log("match" + $(this).attr('href'));
           $(this).css("fill", "rgba(255,0,0,0.22)")
-          
-          // $('svg').css('background-color', "rgba(255,0,0,0.22)")
         }
       });
     }
@@ -113,4 +107,5 @@ if (lyrics.indexOf('GOOG_FIXURL_LANG') > -1){
 
   $('#posWords').text(editArray(posWords));
   $('#negWords').text(editArray(negWords));
+
 });

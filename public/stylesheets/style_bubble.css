@@ -29,8 +29,9 @@ legend {
   z-index: 1;
 }
 
-#formButtonsDiv.btn{
-  border: 5px solid white;
+#formButtonsDiv{
+  top:-20px;
+  background-color: #f5f5f5
 }
 
 
@@ -62,6 +63,10 @@ legend {
 
 a, a:visited {
   color:#333;
+}
+
+.btn, a::selected {
+  color:blue;
 }
 
 #artistSearch {
