@@ -143,35 +143,31 @@
     <div class="well">
       
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#login" data-toggle="tab">Lyrics</a></li>
-        <li><a href="#create" data-toggle="tab">Titles</a></li>
+        <li class="active"><a href="#lyric" data-toggle="tab">Lyrics</a></li>
+        <li><a href="#title" data-toggle="tab">Titles</a></li>
       </ul>
 
 
       <div id="myTabContent" class="tab-content">
-        
-        <div class="tab-pane active in" id="login">
+        <div class="tab-pane active in" id="lyric">
           <form class="form-horizontal" action='/lyrics' method="POST">
             <fieldset>               
               <div class="control-group">
-      
-                <label class="control-label" for="username">Artist</label>
+                <label class="control-label">Artist</label>
                 <div class="controls">
-                  <input type="text" name="artistSearch" placeholder="artist" class="col-lg-12" required="true">
+                  <input type="text" name="artistSearch" class="form-control" for="focusedInput" placeholder="artist" class="col-lg-12" required="true">
                 </div>
               </div>
               
               <div class="control-group">
-
-                <label class="control-label" for="password">Song</label>
+                <label class="control-label">Song</label>
                 <div class="controls">
-                  <input type="text" name="songSearch" placeholder="song" class="col-lg-12" required="true">
+                  <input type="text" name="songSearch" class="form-control" for="focusedInput" placeholder="song" class="col-lg-12" required="true">
                 </div>
               </div>
               
               
               <div class="control-group">
-         
                 <div class="controls">
                   <button class="btn btn-success col-lg-12">Get Lyrics</button>
                 </div>
@@ -181,22 +177,20 @@
         </div>
 
 
-        <div class="tab-pane fade" id="create">
-          <form id="tab" action='/titles' method="POST">
+        <div class="tab-pane fade" id="title">
+          <form action='/titles' method="POST">
             <fieldset>
               <div class="control-group">
-              
-                <label class="control-label">Artist</label>
+                <label class="control-label" style="padding-top:11px; margin-bottom:0px">Artist</label>
                 <div class="controls">
-                  <input type="text" name="artistSearch" placeholder="artist" class="col-lg-12 input-xlarge" required="true">
+                  <input type="text" name="artistSearch" class="form-control" for="focusedInput" placeholder="artist" class="col-lg-12" required="true">
                 </div>
               </div>
 
               <div class="control-group">
-              
-                <label class="control-label">Song</label>
+                <label class="control-label" style="padding-top:11px; margin-bottom:0px">Song</label>
                 <div class="controls">
-                  <input type="text" class="col-lg-12 input-xlarge" disabled>
+                  <input type="text" class="form-control" for="focusedInput" class="col-lg-12" disabled>
                 </div>
               </div>             
               
