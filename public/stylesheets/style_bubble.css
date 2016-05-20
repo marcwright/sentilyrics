@@ -12,6 +12,11 @@ legend {
   margin-bottom: 0px;
 }
 
+#nav-container {
+ /* margin: 0 100px 0 100px;*/
+ max-width: 1050px;
+}
+
 .pos{
   /*color: green;*/
   border: 2px green solid;
