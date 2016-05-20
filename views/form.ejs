@@ -4,97 +4,113 @@
   <body>
     <header><% include partials/header %></header>
 
-    <!-- <h1>What words are used in song...</h1> -->
+    <div id="errorAlertMessage" class="alert alert-dismissible alert-warning" style="display:none">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4>Warning!</h4>
+      <p>That choice is unavailable. <a href="#" class="alert-link" id="alertLinkId">Please try again!</a></p>
+    </div>
    
-   <div id="startDiv" style="display:none">
-    <div class="col-lg-3 col-lg-offset-4" id="lyricsSearchForm">
-      <form class="form-horizontal col-lg-12" action="/lyrics" method="post">
-        <fieldset>
-          <legend>Song Lyric Sentiment</legend>
-          <div class="form-group">
-            <label class="col-lg-1 control-label">Artist</label>
-            <div class="col-lg-12">
-              <input type="text" class="form-control" for="focusedInput" name="artistSearch" placeholder="enter artist">
+    <div id="startDiv" style="display:none">
+      <div class="col-lg-3 col-lg-offset-4" id="lyricsSearchForm">
+        <form class="form-horizontal col-lg-12" action="/lyrics" method="post">
+          <fieldset>
+            <legend>Song Lyric Sentiment</legend>
+            <div class="form-group">
+              <label class="col-lg-1 control-label">Artist</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" for="focusedInput" name="artistSearch" placeholder="enter artist">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-1 control-label">Song</label>
-            <div class="col-lg-12">
-              <input type="text" class="form-control" for="focusedInput" name="songSearch" placeholder="enter song">
+            <div class="form-group">
+              <label class="col-lg-1 control-label">Song</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" for="focusedInput" name="songSearch" placeholder="enter song">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-2">
-              <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-            </div>
-          </div>          
-        </fieldset>
-      </form>
-    </div>
+            <div class="form-group">
+              <div class="col-lg-2">
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+              </div>
+            </div>          
+          </fieldset>
+        </form>
+      </div>
 
-    <div class="col-lg-3 col-lg-offset-4" id="songTitleSearchForm" style="display:none">
-      <form class="form-horizontal col-lg-12" action="/titles" method="post">
-        <fieldset>
-          <legend>Artist Song Titles Sentiment</legend>
-          <div class="form-group">
-            <label class="col-lg-1 control-label">Artist</label>
-            <div class="col-lg-12">
-              <input type="text" class="form-control" for="focusedInput" name="artistSearch" placeholder="enter artist">
+      <div class="col-lg-3 col-lg-offset-4" id="songTitleSearchForm" style="display:none">
+        <form class="form-horizontal col-lg-12" action="/titles" method="post">
+          <fieldset>
+            <legend>Artist Song Titles Sentiment</legend>
+            <div class="form-group">
+              <label class="col-lg-1 control-label">Artist</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" for="focusedInput" name="artistSearch" placeholder="enter artist">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-1 control-label">Song</label>
-            <div class="col-lg-12">
-              <input type="text" class="form-control" for="focusedInput" name="songSearch" placeholder="enter song" disabled="">
+            <div class="form-group">
+              <label class="col-lg-1 control-label">Song</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" for="focusedInput" name="songSearch" placeholder="enter song" disabled="">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-2 col-lg-offset-4">
-              <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-            </div>
-          </div>          
-        </fieldset>
-      </form>
-    </div>
-    
-    <div id="formButtonsDiv" class="col-lg-3 col-lg-offset-4">
-      <div class="btn-group btn-group-justified">
-        <a href="#" id="loadLyricsFormButton" class="btn btn-success btn-lg" style="border: 5px solid white">Search Lyrics</a>
-        <a href="#" id="loadSongTitlesFormButton" class="btn btn-success btn-lg" style="border: 5px solid white">Search Titles</a>
+            <div class="form-group">
+              <div class="col-lg-2 col-lg-offset-4">
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+              </div>
+            </div>          
+          </fieldset>
+        </form>
+      </div>
+      
+      <div id="formButtonsDiv" class="col-lg-3 col-lg-offset-4">
+        <div class="btn-group btn-group-justified">
+          <a href="#" id="loadLyricsFormButton" class="btn btn-success btn-lg" style="border: 5px solid white">Search Lyrics</a>
+          <a href="#" id="loadSongTitlesFormButton" class="btn btn-success btn-lg" style="border: 5px solid white">Search Titles</a>
+        </div>
       </div>
     </div>
-  </div>
 
     <div class="jumbotron">
       <h1>SentiLyrics</h1>
       <p>Sentiment analysis on a song lyric or an artist's song titles</p>
-      <!-- <a href="#" id="loadLyricsFormButton" class="btn btn-success btn-lg">Lyrics</a>
-      <a href="#" id="loadSongTitlesFormButton" class="btn btn-success btn-lg">Song Titles</a> -->
       <a href="#" id="startButton" class="btn btn-success btn-lg">Get Started</a>
     </div>   
 
 
     <script type="text/javascript">
+    var error = "<%= error %>"
+
+    if (error == "error") {
+      $('#errorAlertMessage').show();
+    }
+
+    $('#alertLinkId').on('click', function(){
+      $('.jumbotron').hide();
+      $('#startDiv').show();
+      $('#errorAlertMessage').hide();
+    });
+
+
     $('#startButton').on('click', function(){
       console.log("hello");
       $('.jumbotron').hide();
       $('#startDiv').show();
+      $('#errorAlertMessage').hide();
     })
 
 
-      $('#loadLyricsFormButton').on('click', function(){
-        // $('.jumbotron').hide();
-        $('#lyricsSearchForm').show();
-        // $('#formButtonsDiv').show();
-        $('#songTitleSearchForm').hide();
-      });
+    $('#loadLyricsFormButton').on('click', function(){
+      // $('.jumbotron').hide();
+      $('#lyricsSearchForm').show();
+      // $('#formButtonsDiv').show();
+      $('#songTitleSearchForm').hide();
+    });
 
-      $('#loadSongTitlesFormButton').on('click', function(){
-        // $('.jumbotron').hide();
-        $('#songTitleSearchForm').show();
-        // $('#formButtonsDiv').show();
-        $('#lyricsSearchForm').hide();
-      });
+    $('#loadSongTitlesFormButton').on('click', function(){
+      // $('.jumbotron').hide();
+      $('#songTitleSearchForm').show();
+      // $('#formButtonsDiv').show();
+      $('#lyricsSearchForm').hide();
+    });
 
     </script>
 

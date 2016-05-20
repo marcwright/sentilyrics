@@ -8,7 +8,7 @@ var negativity = require('Sentimental').negativity;
 
 //GET form route
 router.get('/', function(req, res, next) {
-  res.render('form');
+  res.render('form', { error: "none" });
 });
 
 //POST to hit musixmatch API
@@ -50,19 +50,30 @@ router.post('/lyrics', function(req, res, next) {
   url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
   
   x(url, '#songLyricsDiv')(function(err, lyrics) {
+    
     sentiResults = analyze(lyrics);
     console.log(sentiResults.positive.words);    
     songLyricsArray = lyrics.replace("'", "").replace(/,/g, "").replace(/'/g, "").replace(/\W/g, ' ').split(' ');
-    res.render('lyrics', {
-      lyrics: songLyricsArray, 
-      artist: artist, 
-      song: song, 
-      posWordsString: sentiResults.positive.words, 
-      posScore: sentiResults.positive.score,
-      negWordsString: sentiResults.negative.words, 
-      negScore: sentiResults.negative.score,
-      overallScore: sentiResults.score
-    });
+
+
+    if (lyrics.indexOf('GOOG_FIXURL_LANG') > -1){
+      console.log("redirect");
+      res.render('form', { error: "error" });
+    } else {
+      res.render('lyrics', {
+        lyrics: songLyricsArray, 
+        artist: artist, 
+        song: song, 
+        posWordsString: sentiResults.positive.words, 
+        posScore: sentiResults.positive.score,
+        negWordsString: sentiResults.negative.words, 
+        negScore: sentiResults.negative.score,
+        overallScore: sentiResults.score
+      });
+    }
+
+
+
   });
 });
 

@@ -57,6 +57,12 @@ makeShitHappen();
 
 //SENTIMENT CODE
 $(window).load(function () {
+console.log(lyrics);
+
+if (lyrics.indexOf('GOOG_FIXURL_LANG') > -1){
+
+  console.log("redirect");
+}
 
   $('.bubble-label-name').each(function(index, val) {
     if (posWords.indexOf($(this).text()) > -1) {
