@@ -1,2 +1,2 @@
-# music_api_sentiment
-sentiment analysis on song lyrics
+# sentilyrics
+sentiment analysis on song lyrics and titles
