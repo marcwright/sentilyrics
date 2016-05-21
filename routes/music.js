@@ -29,13 +29,35 @@ router.post('/titles', function(req, res, next) {
           titlesString += ' ' + val.track.track_name;
         });
 
-        function lyricsStringArray(string){    
+        function titlesStringArray(string){    
           stringArray = titlesString.replace("'", "").replace(/,/g, "").replace(/'/g, "").replace(/\W/g, ' ').split(' ');
           return stringArray;
         };
 
-        var songLyricsArray = lyricsStringArray(titlesString);
-        res.render('titles', { lyrics: songLyricsArray, artist: artist, pic: artistPic });
+        var songTitlesArray = titlesStringArray(titlesString);
+
+        sentiResults = analyze("marc");
+        console.log(sentiResults); 
+
+
+
+
+
+
+
+
+
+
+        res.render('titles', { 
+          lyrics: songTitlesArray, 
+          artist: artist, 
+          pic: artistPic,
+          posWordsString: ["pos words"],
+          posScore: "1",
+          negWordsString: ["marc"], 
+          negScore: "-10",
+          overallScore: "-9"
+        });
       } 
   }); 
 });

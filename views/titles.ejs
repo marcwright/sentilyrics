@@ -13,20 +13,61 @@
       <div id="main" role="main">
         <div id="vis"></div>
         <div id="status"></div>
-        <div id="controls" class="col-lg-10">
-          <h3>Jitter</h3>
-          <form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
-            <input id="jitter_input" type="range" min="0" max="400" value="100">
-            <output name="output" for="input" style="width:100px;float:right;font-size:40px;margin-top:-35px">0.5</output>
-          </form>
+       
+        <div class="panel panel-primary panel-short" style="margin-right:4px">
+          <div class="panel-heading">
+            <h2 class="panel-title">Jitter</h2>
+          </div>
+          <div class="panel-body">
+            <form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
+              <input id="jitter_input" type="range" min="0" max="400" value="100">
+              <output id="jitter_output" name="output" for="input">0.5</output>
+            </form>
+          </div>
         </div>
+
+        <div class="panel panel-primary panel-short">
+          <div class="panel-heading">
+            <h2 class="panel-title">Overall Senti Score</h2>
+          </div>
+          <div class="panel-body" id="overall" style="margin-top: -12px;font-size: 40px;">
+            <span><%= overallScore %></span>
+          </div>
+        </div>
+
+        <div style="clear:both"></div>
+
+       
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">Positive Senti Score: <strong><%= posScore %></strong></h3>
+          </div>
+          <div class="panel-body">
+            <em class="text-success" id="posWords"></em>
+          </div>
+        </div>
+
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title">Negative Senti Score: <strong><%= negScore %></strong></h3>
+          </div>
+          <div class="panel-body">
+            <em class="text-danger" id="negWords"></em>
+          </div>
+        </div>
+       
       </div>   
     </div> <!--! end of #container -->
 
     <script>
       var lyrics = "<%= lyrics %>"
-    </script>
-   
-    <% include partials/footer %>
+      var posWordsString  = "<%= posWordsString %>"
+      var negWordsString = "<%= negWordsString %>"
+      var posWords = posWordsString.split(",");
+      var negWords = negWordsString.split(",");
+      var overallScore = "<%= overallScore %>"
+    </script>   
+    
+   <% include partials/footer %>
   </body>
 </html>
