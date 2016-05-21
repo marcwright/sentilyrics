@@ -52,9 +52,9 @@ router.post('/titles', function(req, res, next) {
           lyrics: songTitlesArray, 
           artist: artist, 
           pic: artistPic,
-          posWordsString: ["pos words"],
+          posWordsString: ["my", "you", "i", "love", "feel"],
           posScore: "1",
-          negWordsString: ["marc"], 
+          negWordsString: ["hate", "no", "crazy"], 
           negScore: "-10",
           overallScore: "-9"
         });

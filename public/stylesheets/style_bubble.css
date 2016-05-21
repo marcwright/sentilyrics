@@ -1,5 +1,5 @@
 body {
-  font-size: 18px;
+  font-size: 20px;
   text-align:center;
   padding: 50px;
 }
@@ -10,6 +10,18 @@ li {
 
 legend {
   margin-bottom: 0px;
+}
+
+.btn {
+  background-color: #3fb618;
+  color: white;
+  font-size: 1em;
+}
+
+.jumbotron a {
+  background-color: #3fb618;
+  color: white;
+
 }
 
 #songTitleSearchForm {
@@ -29,7 +41,14 @@ legend {
   z-index: 1;
 }
 
+#startButton{
+  margin-top: 1em;
 
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+}
 #nav-container {
  /* margin: 0 100px 0 100px;*/
  max-width: 1050px;
@@ -54,7 +73,7 @@ a, a:visited {
 }
 
 #artistSearch {
-  margin-bottom: 10px;
+  margin-bottom: 0.5em;
 }
 
 #container {
@@ -82,7 +101,9 @@ header {
 #status {
   padding:0 0 5px 5px;
 }
-
+#status .active{
+  color: orange;
+}
 .panel {
   margin-top: -10px;
 }
@@ -94,16 +115,16 @@ header {
 }
 
 .panel-title {
-  font-size: 24px
+  font-size: 1.5em
 }
 
 .panel-body {
-  height: 40px;
+  height: 2em;
   padding: 7px 0 0 0;
 }
 
 input#jitter_input {
-  width:390px;
+  width: 390px;
   float: left;
   margin: 10px 0 0 16px;
 }
@@ -111,13 +132,14 @@ input#jitter_input {
 output#jitter_output {
   width:30px;
   float: right;
-  margin: -22px 65px 0 0 ;
-  font-size:40px;
+  margin: -26px 65px 0 0 ;
+  font-size: 2em;
 }
-/*
-#jitter {
-  height: ;
-}*/
+
+#overall {
+  margin-top: -0.4em;
+  font-size: 2em;
+}
 
 #results {
   padding: 10px;
@@ -127,7 +149,7 @@ output#jitter_output {
   width: 1090px;
   text-align: left;
   height: 150px;
-  font-size: 24px;
+  font-size: 1.5em;
   /*float: right;*/
 }
 
@@ -153,15 +175,15 @@ output#jitter_output {
 
 .bubble-selected {
   /* fill: #a8c8ee;  */
-  fill: #FFE98F;
+  fill: orange;
   /* stroke: #6081a3; */
   stroke: #A6BA92;
   stroke-width: 1.5px;
 }
 
-/*.active {
+.active {
   color: #A6BA92
-}*/
+}
 
 a.bubble-label {
   font-family: arial, georgia, "times new roman", times, serif;
@@ -178,4 +200,5 @@ a.bubble-label {
   font: 11px sans-serif;
   white-space: nowrap;
 }
+
 

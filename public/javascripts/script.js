@@ -57,26 +57,28 @@ makeShitHappen();
 
 //SENTIMENT CODE
 $(window).load(function () {
-console.log(lyrics);
+  console.log(lyrics);
 
-if (lyrics.indexOf('GOOG_FIXURL_LANG') > -1){
+  if (lyrics.indexOf('GOOG_FIXURL_LANG') > -1){
+    console.log("redirect");
+  }
 
-  console.log("redirect");
-}
+  var posColor = "#3fb618";
+  var negColor = "#ff0039";
 
   $('.bubble-label-name').each(function(index, val) {
     if (posWords.indexOf($(this).text()) > -1) {
       var parentAttr = $(this).parent().attr('href');
       $('.bubble-node').each(function(){
         if ($(this).attr('href') == parentAttr){
-          $(this).css("fill", "rgba(81,163,81,0.5)")
+          $(this).css("fill", posColor)
         }
       });
     } else if(negWords.indexOf($(this).text()) > -1) {
       var parentAttr = $(this).parent().attr('href');
       $('.bubble-node').each(function(){
         if ($(this).attr('href') == parentAttr){
-          $(this).css("fill", "rgba(255,0,0,0.22)")
+          $(this).css("fill", negColor)
         }
       });
     }
@@ -86,10 +88,12 @@ if (lyrics.indexOf('GOOG_FIXURL_LANG') > -1){
 
   if (parseInt(overallScore) > -1) {
     $('#vis').addClass('pos');
-    $('#overall').css('color', 'green');
+    $('#overall').css('color', posColor);
+    $('#songTitle').css('color', posColor);
   } else {
     $('#vis').addClass('neg');
-    $('#overall').css('color', 'red');;
+    $('#overall').css('color', negColor);
+    $('#songTitle').css('color', negColor);
   }
 
   //remove duplicate words from sentiment pos/neg words arrays

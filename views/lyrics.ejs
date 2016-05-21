@@ -5,7 +5,7 @@
     <header><% include partials/header %></header>
     
     <div>
-      <h1><strong><%= artist.replace("+", " ").toUpperCase(); %></strong> / <%= song.replace(/\+/g, " ").toUpperCase(); %></h1>
+      <h1><strong><%= artist.split("+").join(",").replace(/,/g, " ").toUpperCase(); %></strong> / <span id="songTitle"><%= song.replace(/\+/g, " ").toUpperCase(); %></span></h1>
     </div>
 
     <div id="container" class="container">  
@@ -29,7 +29,7 @@
           <div class="panel-heading">
             <h2 class="panel-title">Overall Senti Score</h2>
           </div>
-          <div class="panel-body" id="overall" style="margin-top: -12px;font-size: 40px;">
+          <div class="panel-body" id="overall">
             <span><%= overallScore %></span>
           </div>
         </div>
