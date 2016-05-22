@@ -3,49 +3,41 @@ body {
   text-align:center;
   padding: 50px;
 }
-
 li {
   overflow:hidden
 }
-
 legend {
   margin-bottom: 0px;
 }
-
+.control-label {
+  color: black;
+}
 .btn {
   background-color: #3fb618;
   color: white;
   font-size: 1em;
 }
-
 .jumbotron a {
   background-color: #3fb618;
   color: white;
-
 }
-
 #songTitleSearchForm {
   background-color: #f5f5f5;
   height: 300px;
   z-index: -1;
 }
-
 #lyricsSearchForm {
   background-color: #f5f5f5;
   height: 300px;
   z-index: -1;
 }
-
 .jumbotron {
   position: relative;
   z-index: 1;
 }
-
 #startButton{
   margin-top: 1em;
-
 }
-
 .navbar-brand {
   font-size: 1.5em;
 }
@@ -53,76 +45,62 @@ legend {
  /* margin: 0 100px 0 100px;*/
  max-width: 1050px;
 }
-
 .pos{
   /*color: green;*/
   border: 2px green solid;
 }
-
 .neg {
   /*color: red;*/
   border: 2px red solid;
 }  
-
 a, a:visited {
   color:#333;
 }
-
 .btn, a::selected {
   color:blue;
 }
-
 #artistSearch {
   margin-bottom: 0.5em;
 }
-
 #container {
   margin-top: 5px;
   width: 1067px;
   border: 2px;
 }
-
 header {
   padding: 10px;
 }
-
 #text-select {
   float:right;
   margin-right: 10px;
 }
-
 #vis {
   overflow: hidden;
   position: relative;
   /*width: 1067px;*/
   height: 510px;
 }
-
 #status {
   padding:0 0 5px 5px;
 }
 #status .active{
-  color: orange;
+  color: #2780e3;
 }
 .panel {
   margin-top: -10px;
 }
-
 .panel-short {
   height: 100px;
   width: 516px;
   float:left;
 }
-
 .panel-title {
   font-size: 1.5em
 }
-
 .panel-body {
   height: 2em;
   padding: 7px 0 0 0;
 }
-
 input#jitter_input {
   width: 390px;
   float: left;
@@ -175,10 +153,10 @@ output#jitter_output {
 
 .bubble-selected {
   /* fill: #a8c8ee;  */
-  fill: orange;
-  /* stroke: #6081a3; */
-  stroke: #A6BA92;
-  stroke-width: 1.5px;
+  fill: #2780e3;
+  stroke: #6081a3; 
+  /*stroke: #A6BA92;*/
+  stroke-width: 3px;
 }
 
 .active {

@@ -184,7 +184,7 @@
         return id === idValue(d);
       });
       if (id.length > 0) {
-        return d3.select("#status").html("<h3>The word <span class=\"active\">" + id + "</span> is now active</h3>");
+        return d3.select("#status").html("<h3>The word <a href='https://www.google.com/#q=" + id + "' target='_blank'><span class=\"active\">" + id + "</span></a> is now active</h3>");
       } else {
         return d3.select("#status").html("<h3>No word is active</h3>");
       }

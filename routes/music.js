@@ -39,15 +39,6 @@ router.post('/titles', function(req, res, next) {
         sentiResults = analyze("marc");
         console.log(sentiResults); 
 
-
-
-
-
-
-
-
-
-
         res.render('titles', { 
           lyrics: songTitlesArray, 
           artist: artist, 
@@ -90,7 +81,8 @@ router.post('/lyrics', function(req, res, next) {
         posScore: sentiResults.positive.score,
         negWordsString: sentiResults.negative.words, 
         negScore: sentiResults.negative.score,
-        overallScore: sentiResults.score
+        overallScore: sentiResults.score,
+        url: url
       });
     }
 
