@@ -3,6 +3,7 @@
   <head><% include partials/head %></head>
   <body>
     <header><% include partials/header %></header>
+<div id="beatles" class="col-lg-12 col-sm-12"></div> <!-- end of beatles div -->   
 
     <div id="errorAlertMessage" class="alert alert-dismissible alert-warning col-lg-8 col-lg-offset-2 col-sm-12" style="display:none">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -14,7 +15,7 @@
       <div id="lyricsSearchForm" class="tab-content">
         <fieldset>
           <div class="control-group">
-            <label class="control-label">SentiLyrics</label>
+            <label class="control-label">Artist</label>
             <div class="controls">
               <input type="text" id="formArtistSearch" name="artistSearch" class="form-control" for="focusedInput" placeholder="enter an artist" class="col-lg-12" required="true" onkeypress="handle(event)" autocomplete="off">
             </div>
@@ -39,6 +40,8 @@
       <h2>Get sentiment analysis on song lyrics</h2>
       <a href="#" id="startButton" class="btn btn-lg">Get Started</a>
     </div>   
+
+
 
     <script type="text/javascript">
       var error = "<%= error %>"
@@ -103,7 +106,8 @@
         success: function(data) {
           artistImage = data.message.body.track_list[0].track.album_coverart_350x350 || data.message.body.track_list[1].track.album_coverart_350x350;
           
-          $('#loginModal').append("<img src='" + artistImage + "' style='margin-top:1em;border: 1px solid black'>");
+          $('#loginModal').append("<img src='" + artistImage + "' style='margin-top:1em;border: 1px solid black'>")
+              .css('height', '30em');
 
           $('#trackSelectDiv').show();
           artistTracksArray = [];

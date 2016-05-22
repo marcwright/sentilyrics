@@ -2,6 +2,23 @@ body {
   font-size: 20px;
   text-align:center;
   padding: 50px;
+
+}
+#beatles {
+  background-image: url("../images/beatles-songs.jpg");
+  background-color: black;
+  /*opacity: 0.4;*/
+  /*z-index: -3;*/
+  position: absolute;
+  margin-top: -5em;
+  margin-left: -6em;
+  
+  width: 115%;
+  height: 110%;
+  background-repeat: no-repeat;
+  /*background-size: cover;*/
+  background-size: 115% auto
+
 }
 li {
   overflow:hidden
@@ -26,12 +43,21 @@ legend {
   
 }
 .jumbotron {
+  opacity: 1;
   position: relative;
   z-index: 1;
 }
 #startButton{
   margin-top: 1em;
 }
+#loginModal{
+  background-color: #e6e6e6;
+  height: 10em;
+  padding-top: 1em;
+}
+/*.navbar{
+  background-color: #e6e6e6
+}*/
 .navbar-brand {
   font-size: 1.5em;
 }
