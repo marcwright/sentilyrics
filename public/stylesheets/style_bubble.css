@@ -21,11 +21,10 @@ legend {
   background-color: #3fb618;
   color: white;
 }
-/*#lyricsSearchForm {
-  background-color: #e6e6e6;
-  height: 300px;
+#trackSelectDiv {
+  border-bottom: 1em;
   
-}*/
+}
 .jumbotron {
   position: relative;
   z-index: 1;

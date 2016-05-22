@@ -36,7 +36,7 @@
 
     <div class="jumbotron col-lg-8 col-lg-offset-2 col-sm-12">
       <h1>SentiLyrics</h1>
-      <h2>Get sentiment analysis on song lyrics or titles</h2>
+      <h2>Get sentiment analysis on song lyrics</h2>
       <a href="#" id="startButton" class="btn btn-lg">Get Started</a>
     </div>   
 
@@ -61,12 +61,17 @@
       }    
 
       function handle(event){
-        var search = $( "#formArtistSearch" ).val();
+        search = $( "#formArtistSearch" ).val();
         
         if(event.keyCode === 13){
+          $('#drop').empty();
+          $('#loginModal img').remove();
           $('#artistSearch').val(search);
           musixmatchAPIArtistSearch(search);  
-          $('#trackSelectDiv').prepend("<input type='hidden' name='artistSearch' value='" + search + "'>");
+          console.log(search);
+
+          $('#hiddenSearchField').remove();
+          $('#trackSelectDiv').prepend("<input type='hidden' id='hiddenSearchField' name='artistSearch' value='" + search + "'>");
         }
         return false;
       }
@@ -95,16 +100,13 @@
             console.log(errorThrown);
         },
         success: function(data) {
-          trackListArray = data.message.body.track_list;
-          artistTracksArray = [];
-
-          var artistImage = data.message.body.track_list[0].track.album_coverart_350x350;
-          console.log(artistImage);
-
-          $('#loginModal').append("<img src='" + artistImage + "'>");
-
+          artistImage = data.message.body.track_list[0].track.album_coverart_350x350 || data.message.body.track_list[1].track.album_coverart_350x350;
+          
+          $('#loginModal').append("<img src='" + artistImage + "' style='margin-top:1em;border: 1px solid black'>");
 
           $('#trackSelectDiv').show();
+          artistTracksArray = [];
+          trackListArray = data.message.body.track_list;
 
           trackListArray.forEach(function(track){            
             artistTracksArray.push(track.track.track_name);
