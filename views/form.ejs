@@ -178,26 +178,30 @@
 
 
             <div class="tab-pane fade" id="title">
-              <form action='/titles' method="POST">
+              
                 <fieldset>
                   <div class="control-group">
                     <label class="control-label" style="padding-top:11px; margin-bottom:0px">Artist</label>
                     <div class="controls">
-                      <input type="text" name="artistSearch" class="form-control" for="focusedInput" placeholder="artist" class="col-lg-12" required="true">
+                      <input type="text" id="formArtistSearch" name="artistSearch" class="form-control" for="focusedInput" placeholder="artist" class="col-lg-12" required="true" onkeypress="handle(event)">
                     </div>
                   </div>
 
                   <div class="control-group">
-                    <label class="control-label" style="padding-top:11px; margin-bottom:0px">Song</label>
-                    <div class="controls">
-                      <input type="text" class="form-control" for="focusedInput" class="col-lg-12" disabled>
-                    </div>
-                  </div>             
-                  
-                  <div class="control-group">
-                  
                     <div class="controls" style="padding-top:11px;">
-                      <button class="btn col-lg-12">Get Titles</button>
+                      <button class="btn col-lg-12" id="getTitlesButton" type="button">Get Titles</button>
+                    </div>
+                  </div>
+
+
+                  <form action='/lyrics' method="POST">  
+                  
+                  <div class="control-group" id="trackSelectDiv" style="display:none" >
+                    <label class="control-label" style="padding-top:11px; margin-bottom:0px">Track</label>
+                    <div class="controls">
+                      <select name="songSearch" class="col-lg-12 col-sm-12" id="drop" onchange='this.form.submit()'>
+                        <option value="">-- Select --</option>
+                      </select>
                     </div>
                   </div>
                 </fieldset>
@@ -207,31 +211,12 @@
         </div>
       </div>
     </div>
- 
-
-
-
-
 
     <div class="jumbotron col-lg-8 col-lg-offset-2 col-sm-12">
       <h1>SentiLyrics</h1>
       <h2>Get sentiment analysis on song lyrics or titles</h2>
       <a href="#" id="startButton" class="btn btn-lg">Get Started</a>
     </div>   
-
-
-
-
-  <div>
-    <form>
-      <select name="artistSearch" class="col-lg-8 col-lg-offset-2 col-sm-12" id="drop">
-        <option value="">-- Select --</option>
-        <option value="1">Option 1</option>
-        
-      </select>
-      <noscript><input type="submit" value="Submit"></noscript>
-    </form>
-  </div>
 
     <script type="text/javascript">
       var error = "<%= error %>"
@@ -268,11 +253,27 @@
         $('#errorAlertMessage').hide();
       }    
 
-    // event handler that calls the searchArtist function
-    $('#drop').on('change', function(e){
-      e.preventDefault;
-      musixmatchAPIArtistSearch($(this).val());    
-    });
+        // event handler that calls the searchArtist function
+    // $('#getTitlesButton').keypress(function(e){
+    //   e.preventDefault;
+      // var search = $( "#formArtistSearch" ).val();
+      // var key = e.which;
+      // console.log(key);
+      // var search2;
+
+      function handle(event){
+        var search = $( "#formArtistSearch" ).val();
+        
+        if(event.keyCode === 13){
+            // alert("Enter was pressed was presses");
+            musixmatchAPIArtistSearch(search);  
+            $('#trackSelectDiv').prepend("<input type='hidden' name='artistSearch' value='" + search + "'>");
+        }
+
+        return false;
+      }
+    // });
+
 
     // calls the musixmatch API, returns all tracks by given artist
     function musixmatchAPIArtistSearch(userInput){
@@ -301,12 +302,13 @@
           trackListArray = data.message.body.track_list;
           artistTracksArray = [];
 
+          $('#trackSelectDiv').show();
+
           trackListArray.forEach(function(track){            
             artistTracksArray.push(track.track.track_name);
           })
          
           $.each(artistTracksArray.sort(), function(index, name){
-            // console.log(name);
               $('#drop').append("<option value='" + name + "'>" + name + "</option>");
            });          
         } 
