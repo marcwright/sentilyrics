@@ -5,19 +5,20 @@ body {
 
 }
 #beatles {
-  background-image: url("../images/beatles-songs.jpg");
+  /*background-image: url("../images/beatles-songs.png");*/
+  background-image: url("../images/rsz_beatles-songs.jpg");
   background-color: black;
   /*opacity: 0.4;*/
-  /*z-index: -3;*/
+  z-index: -3;
   position: absolute;
   margin-top: -5em;
   margin-left: -6em;
   
-  width: 115%;
-  height: 110%;
+  width: 110%;
+  height: 130%;
   background-repeat: no-repeat;
-  /*background-size: cover;*/
-  background-size: 115% auto
+  background-size: cover;
+  /*background-size: 115% auto*/
 
 }
 li {
@@ -46,18 +47,32 @@ legend {
   opacity: 1;
   position: relative;
   z-index: 1;
+  background-color: white
 }
 #startButton{
   margin-top: 1em;
 }
 #loginModal{
-  background-color: #e6e6e6;
+  /*background-color: #e6e6e6;*/
+  background-color: white;
   height: 10em;
   padding-top: 1em;
 }
 /*.navbar{
   background-color: #e6e6e6
 }*/
+#d3display{
+  background-color: white;
+  opacity: 1;
+  z-index:-1;
+  margin-top: 5px;
+
+  width: 1067px;
+  border: 2px;
+  /*position: absolute;*/
+  /*width: 50em;*/
+  height: 60em
+}
 .navbar-brand {
   font-size: 1.5em;
 }
@@ -86,6 +101,7 @@ a, a:visited {
   margin-top: 5px;
   width: 1067px;
   border: 2px;
+  background-color: white;
 }
 header {
   padding: 10px;

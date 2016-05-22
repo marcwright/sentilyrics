@@ -3,9 +3,9 @@
   <head><% include partials/head %></head>
   <body>
     <header><% include partials/header %></header>
-<div id="beatles" class="col-lg-12 col-sm-12"></div> <!-- end of beatles div -->   
+    <div id="beatles" class="col-lg-12 col-sm-12"></div> <!-- end of beatles div -->   
 
-    <div id="errorAlertMessage" class="alert alert-dismissible alert-warning col-lg-8 col-lg-offset-2 col-sm-12" style="display:none">
+    <div id="errorAlertMessage" class="alert alert-dismissible alert-danger col-lg-8 col-lg-offset-2 col-sm-12" style="display:none">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <h4>Warning!</h4>
       <p>That choice is unavailable. <a href="#" class="alert-link" id="alertLinkId">Please try again!</a></p>
@@ -107,7 +107,7 @@
           artistImage = data.message.body.track_list[0].track.album_coverart_350x350 || data.message.body.track_list[1].track.album_coverart_350x350;
           
           $('#loginModal').append("<img src='" + artistImage + "' style='margin-top:1em;border: 1px solid black'>")
-              .css('height', '30em');
+              .css('height', '28em');
 
           $('#trackSelectDiv').show();
           artistTracksArray = [];
