@@ -122,7 +122,7 @@ a, a:visited {
   border: 2px;
   background-color: white;
   opacity: 0.95
-  
+
 }
 header {
   padding: 10px;
@@ -228,12 +228,14 @@ a.bubble-label {
   text-align: center;
   text-decoration: none;
   line-height: 1em;
+  margin-top: -0.6em;
   position: absolute;
 }
 
 .bubble-label .bubble-label-value {
   font: 11px sans-serif;
   white-space: nowrap;
+  line-height: 1em;
 }
 
 
