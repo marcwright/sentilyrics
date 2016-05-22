@@ -112,4 +112,9 @@ $(window).load(function () {
   $('#posWords').text(editArray(posWords));
   $('#negWords').text(editArray(negWords));
 
+  $('#container').fadeIn(700);
+  
+
+
+
 });

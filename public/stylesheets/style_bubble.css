@@ -6,7 +6,25 @@ body {
 }
 #beatles {
   /*background-image: url("../images/beatles-songs.png");*/
-  background-image: url("../images/rsz_beatles-songs.jpg");
+  background-image: url("../images/beatles-songs.jpg");
+  background-color: black;
+  /*opacity: 0.4;*/
+  z-index: -3;
+  position: absolute;
+  margin-top: -5em;
+  margin-left: -6em;
+  
+  width: 110%;
+  height: 130%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-size: 115% auto*/
+
+}
+
+#beatles2 {
+  /*background-image: url("../images/beatles-songs.png");*/
+  /*background-image: url("../images/rsz_beatles-songs.jpg");*/
   background-color: black;
   /*opacity: 0.4;*/
   z-index: -3;
@@ -38,6 +56,7 @@ legend {
 .jumbotron a {
   background-color: #3fb618;
   color: white;
+
 }
 #trackSelectDiv {
   border-bottom: 1em;
@@ -47,7 +66,7 @@ legend {
   opacity: 1;
   position: relative;
   z-index: 1;
-  background-color: white
+  background-color: white;
 }
 #startButton{
   margin-top: 1em;
@@ -102,6 +121,8 @@ a, a:visited {
   width: 1067px;
   border: 2px;
   background-color: white;
+  opacity: 0.95
+  
 }
 header {
   padding: 10px;

@@ -60,6 +60,7 @@ router.post('/lyrics', function(req, res, next) {
   artist = artistArray.join('+');
   songArray = req.body.songSearch.split(' ');
   song = songArray.join('+');
+  artistImage = req.body.artistImage;
 
   url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
   
@@ -83,7 +84,8 @@ router.post('/lyrics', function(req, res, next) {
         negWordsString: sentiResults.negative.words, 
         negScore: sentiResults.negative.score,
         overallScore: sentiResults.score,
-        url: url
+        url: url,
+        artistImage: artistImage
       });
     }
 
