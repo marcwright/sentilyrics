@@ -223,8 +223,8 @@
 
 
   <div>
-    <form action="/titles" method="post">
-      <select name="artistSearch" class="col-lg-8 col-lg-offset-2 col-sm-12" id="drop" onchange='this.form.submit()'>
+    <form>
+      <select name="artistSearch" class="col-lg-8 col-lg-offset-2 col-sm-12" id="drop">
         <option value="">-- Select --</option>
         <option value="1">Option 1</option>
         
@@ -268,17 +268,58 @@
         $('#errorAlertMessage').hide();
       }    
 
-       var names = ["drake", "adele"];
-        console.log(names);
+    // event handler that calls the searchArtist function
+    $('#drop').on('change', function(e){
+      e.preventDefault;
+      musixmatchAPIArtistSearch($(this).val());    
+    });
 
-        $.each(names, function(index, name){
-          console.log(name);
-          $('#drop').append("<option value='" + name + "'>" + name + "</option>");
-        });
+    // calls the musixmatch API, returns all tracks by given artist
+    function musixmatchAPIArtistSearch(userInput){
+      console.log(userInput);
+      $.ajax({
+        type: "GET",
+        data: {
+            apikey:"45f030feddac66fcfa2f9e9f659608c4",
+            page_size: 100,
+            // q_track:"back to december",
+            q_artist: userInput,
+            // f_has_lyrics: 1, //only return results with lyrics
+            format:"jsonp",
+            callback:"jsonp_callback"
+        },
+        url: "https://api.musixmatch.com/ws/1.1/track.search",
+        dataType: "jsonp",
+        jsonpCallback: 'jsonp_callback',
+        contentType: 'application/json',
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+            console.log(textStatus);
+            console.log(errorThrown);
+        },
+        success: function(data) {
+          trackListArray = data.message.body.track_list;
+          artistTracksArray = [];
 
-        $('#drop').on('change', function() {
-          console.log($(this).val())
-        });
+          trackListArray.forEach(function(track){            
+            artistTracksArray.push(track.track.track_name);
+          })
+         
+          $.each(artistTracksArray.sort(), function(index, name){
+            // console.log(name);
+              $('#drop').append("<option value='" + name + "'>" + name + "</option>");
+           });          
+        } 
+      }) //end of AJAX
+    } //end of musixmatchAPIArtistSearch function
+
+
+
+
+
+
+
+
 
 
     </script>

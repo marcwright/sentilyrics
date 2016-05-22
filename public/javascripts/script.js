@@ -84,7 +84,7 @@ $(window).load(function () {
     }
   });
 
-  console.log(overallScore);
+  // console.log(overallScore);
 
   if (parseInt(overallScore) > -1) {
     $('#vis').addClass('pos');
@@ -103,7 +103,7 @@ $(window).load(function () {
     array.forEach(function(val){
       if (editedArray.indexOf(val) == -1){
         editedArray.push(val);
-        console.log(val);      
+        // console.log(val);      
       }
     });
     return editedArray;
