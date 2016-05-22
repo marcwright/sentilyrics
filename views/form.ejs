@@ -14,15 +14,15 @@
       <div id="lyricsSearchForm" class="tab-content">
         <fieldset>
           <div class="control-group">
-            <label class="control-label" style="padding-top:11px; margin-bottom:0px">AJAX Song Lyric</label>
+            <label class="control-label">SentiLyrics</label>
             <div class="controls">
-              <input type="text" id="formArtistSearch" name="artistSearch" class="form-control" for="focusedInput" placeholder="artist" class="col-lg-12" required="true" onkeypress="handle(event)" autocomplete="off">
+              <input type="text" id="formArtistSearch" name="artistSearch" class="form-control" for="focusedInput" placeholder="enter an artist" class="col-lg-12" required="true" onkeypress="handle(event)" autocomplete="off">
             </div>
           </div>
 
           <form action='/lyrics' method="POST">  
             <div class="control-group" id="trackSelectDiv" style="display:none" >
-              <label class="control-label" style="padding-top:11px; margin-bottom:0px">Track</label>
+              <label class="control-label">Track</label>
               <div class="controls">
                 <select name="songSearch" class="col-lg-12 col-sm-12" id="drop" onchange='this.form.submit()'>
                   <option value="">-- Select --</option>
@@ -98,6 +98,12 @@
           trackListArray = data.message.body.track_list;
           artistTracksArray = [];
 
+          var artistImage = data.message.body.track_list[0].track.album_coverart_350x350;
+          console.log(artistImage);
+
+          $('#loginModal').append("<img src='" + artistImage + "'>");
+
+
           $('#trackSelectDiv').show();
 
           trackListArray.forEach(function(track){            
@@ -105,20 +111,11 @@
           })
          
           $.each(artistTracksArray.sort(), function(index, name){
-              $('#drop').append("<option value='" + name + "'>" + name + "</option>");
-           });          
+            $('#drop').append("<option value='" + name + "'>" + name + "</option>");
+          });          
         } 
       }) //end of AJAX
     } //end of musixmatchAPIArtistSearch function
-
-
-
-
-
-
-
-
-
 
     </script>
 
