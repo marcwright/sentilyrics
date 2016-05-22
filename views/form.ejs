@@ -221,6 +221,18 @@
 
 
 
+
+  <div>
+    <form action="/titles" method="post">
+      <select name="artistSearch" class="col-lg-8 col-lg-offset-2 col-sm-12" id="drop" onchange='this.form.submit()'>
+        <option value="">-- Select --</option>
+        <option value="1">Option 1</option>
+        
+      </select>
+      <noscript><input type="submit" value="Submit"></noscript>
+    </form>
+  </div>
+
     <script type="text/javascript">
       var error = "<%= error %>"
 
@@ -255,6 +267,20 @@
         $('#startDiv').show();
         $('#errorAlertMessage').hide();
       }    
+
+       var names = ["drake", "adele"];
+        console.log(names);
+
+        $.each(names, function(index, name){
+          console.log(name);
+          $('#drop').append("<option value='" + name + "'>" + name + "</option>");
+        });
+
+        $('#drop').on('change', function() {
+          console.log($(this).val())
+        });
+
+
     </script>
 
   </body>

@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 
 //POST to hit musixmatch API
 router.post('/titles', function(req, res, next) {
+  console.log(req.body);
   artistArray = req.body.artistSearch.split(' ');
   artist = artistArray.join('+');
 

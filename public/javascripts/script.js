@@ -112,4 +112,25 @@ $(window).load(function () {
   $('#posWords').text(editArray(posWords));
   $('#negWords').text(editArray(negWords));
 
+  //DROPDOWN
+
+  // var names = ["hello", "chasing pavements"];
+  // console.log(names);
+
+  // $.each(names, function(index, name){
+  //   console.log(name);
+  //   $('#drop').append("<option value='" + name + "'>" + name + "</option>");
+  // });
+
+
+
+
+
+
+
+
+
+
+
+
 });
