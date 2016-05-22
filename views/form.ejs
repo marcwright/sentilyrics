@@ -69,6 +69,7 @@
           $('#artistSearch').val(search);
           musixmatchAPIArtistSearch(search);  
           console.log(search);
+          $('#drop').prepend("<option value=''>-- Select --</option>");
 
           $('#hiddenSearchField').remove();
           $('#trackSelectDiv').prepend("<input type='hidden' id='hiddenSearchField' name='artistSearch' value='" + search + "'>");
@@ -114,7 +115,8 @@
          
           $.each(artistTracksArray.sort(), function(index, name){
             $('#drop').append("<option value='" + name + "'>" + name + "</option>");
-          });          
+          });
+
         } 
       }) //end of AJAX
     } //end of musixmatchAPIArtistSearch function
