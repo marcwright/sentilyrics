@@ -20,7 +20,7 @@
           <div id="vis"></div>
           <div id="status"></div>
          
-          <div class="panel panel-primary panel-short" style="margin-right:4px">
+          <div class="panel panel-default panel-short" style="margin-right:4px">
             <div class="panel-heading">
               <h2 class="panel-title">Jitter</h2>
             </div>
@@ -32,17 +32,45 @@
             </div>
           </div>
 
-          <div class="panel panel-primary panel-short">
+          <div class="panel panel-default panel-short">
             <div class="panel-heading">
               <h2 class="panel-title">Overall Senti Score</h2>
             </div>
-            <div class="panel-body" id="overall">
+            <div class="panel-body overall" id="overall">
               <span><%= overallScore %></span>
             </div>
           </div>
 
-          <div style="clear:both"></div>
+          <div id="wordCount" class="col-lg-12">
+            <div class="panel panel-default col-lg-4">
+              <div class="panel-heading">
+                <h2 class="panel-title">Unique Words</h2>
+              </div>
+              <div class="panel-body overall">
+                <span id="uniqueWords"></span>
+              </div>
+            </div>
 
+            <div class="panel panel-default col-lg-4">
+              <div class="panel-heading">
+                <h2 class="panel-title">Total Words</h2>
+              </div>
+              <div class="panel-body overall" id="totalWords">
+                <span id="totalWords"></span>
+              </div>
+            </div>
+
+            <div class="panel panel-default col-lg-4">
+              <div class="panel-heading">
+                <h2 class="panel-title">Unique Percentage</h2>
+              </div>
+              <div class="panel-body overall" id="uniqueWords">
+                <span id="uniquePercentage"></span>
+              </div>
+            </div>
+          </div>
+
+          <div style="clear:both"></div>
          
           <div class="panel panel-success">
             <div class="panel-heading">
@@ -61,7 +89,7 @@
               <em class="text-danger" id="negWords"></em>
             </div>
           </div>
-         
+  
         </div>   
       </div> <!--! end of #container -->
  <!-- </div> -->
@@ -76,8 +104,9 @@
       var url = "<%= url %>"
       var artistImage = "<%= artistImage %>"
 
-      $('#beatles').css('background-image', "url('" + artistImage + "')");
+      
 
+      $('#beatles').css('background-image', "url('" + artistImage + "')");
     </script>   
     
    <% include partials/footer %>

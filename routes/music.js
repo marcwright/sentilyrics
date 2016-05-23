@@ -65,7 +65,7 @@ router.post('/lyrics', function(req, res, next) {
   url = "http://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
   
   x(url, '#songLyricsDiv')(function(err, lyrics) {
-    
+
     sentiResults = analyze(lyrics);
     console.log(sentiResults.positive.words);    
     songLyricsArray = lyrics.replace("'", "").replace(/,/g, "").replace(/'/g, "").replace(/\W/g, ' ').split(' ');

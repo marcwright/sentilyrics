@@ -113,8 +113,25 @@ $(window).load(function () {
   $('#negWords').text(editArray(negWords));
 
   $('#container').fadeIn(700);
+
+  var lyricsArray = lyrics.split(',').filter(Boolean)
+
+  var wordCount = lyricsArray.length
+  console.log(lyricsArray);
+
+  var uniqueWords = [];
+
+  lyricsArray.forEach(function(val){
+    if (uniqueWords.indexOf(val) == -1 && val !== "") {
+      uniqueWords.push(val);
+    }
+  });
+
+  var uniquePercentage = Math.trunc(Math.floor((uniqueWords.length / wordCount) * 100));
   
-
-
+  console.log(uniqueWords);
+  $('#totalWords').text(wordCount);
+  $('#uniqueWords').text(uniqueWords.length);
+  $('#uniquePercentage').text(uniquePercentage + "%");
 
 });

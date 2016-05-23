@@ -145,6 +145,8 @@ header {
 }
 .panel {
   margin-top: -10px;
+  padding-left:0px;
+  padding-right:0px
 }
 .panel-short {
   height: 100px;
@@ -155,7 +157,7 @@ header {
   font-size: 1.5em
 }
 .panel-body {
-  height: 2em;
+  /*height: 2em;*/
   padding: 7px 0 0 0;
 }
 input#jitter_input {
@@ -171,11 +173,14 @@ output#jitter_output {
   font-size: 2em;
 }
 
-#overall {
-  margin-top: -0.4em;
+.overall {
+  margin-top: -0.35em;
   font-size: 2em;
 }
-
+#wordCount{
+  padding-left: 0;
+  padding-right: 0;
+}
 #results {
   padding: 10px;
   /*background-color: #eee;*/
@@ -187,27 +192,22 @@ output#jitter_output {
   font-size: 1.5em;
   /*float: right;*/
 }
-
 #bubble-background {
   fill: none;
   pointer-events: all;
 }
-
 .bubble-node {
    fill: #d1e0f3; 
   /*fill: #DCE9BE;*/
 }
-
 .bubble-new {
    fill: red; 
   /*fill: #DCE9BE;*/
 }
-
 .bubble-hover {
   /* fill: #b8c7d9; */
   fill: #E8E9E7;
 }
-
 .bubble-selected {
   /* fill: #a8c8ee;  */
   fill: #2780e3;
@@ -215,11 +215,9 @@ output#jitter_output {
   /*stroke: #A6BA92;*/
   stroke-width: 3px;
 }
-
 .active {
   color: #A6BA92
 }
-
 a.bubble-label {
   font-family: arial, georgia, "times new roman", times, serif;
   color: inherit;
@@ -231,11 +229,8 @@ a.bubble-label {
   margin-top: -0.6em;
   position: absolute;
 }
-
 .bubble-label .bubble-label-value {
   font: 11px sans-serif;
   white-space: nowrap;
   line-height: 1em;
 }
-
-
