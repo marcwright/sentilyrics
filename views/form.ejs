@@ -91,7 +91,7 @@
             page_size: 100,
             // q_track:"back to december",
             q_artist: userInput,
-            // f_has_lyrics: 1, //only return results with lyrics
+            f_has_lyrics: 1, //only return results with lyrics
             format:"jsonp",
             callback:"jsonp_callback"
         },
@@ -105,6 +105,7 @@
             console.log(errorThrown);
         },
         success: function(data) {
+          console.log(data.message.body.track_list);
           artistImage = data.message.body.track_list[0].track.album_coverart_350x350 || (data.message.body.track_list[1].track.album_coverart_350x350 || data.message.body.track_list[1].track.album_coverart_100x100);
 
           artistImage800 = data.message.body.track_list[0].track.album_coverart_800x800 || artistImage;
