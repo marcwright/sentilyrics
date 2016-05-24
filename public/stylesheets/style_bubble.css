@@ -158,7 +158,8 @@ header {
 }
 .panel-body {
   /*height: 2em;*/
-  padding: 7px 0 0 0;
+  padding: 7px 3px 5px 3px;
+  overflow: hidden;
 }
 input#jitter_input {
   width: 390px;
