@@ -11,6 +11,18 @@ router.get('/', function(req, res, next) {
   res.render('form', { error: "none" });
 });
 
+router.post('/apikey', function(req, res, next){
+  console.log(req.body);
+  artist = req.body.search;
+
+  request.get({ url: "https://api.musixmatch.com/ws/1.1/track.search?q_artist=" + artist + "&page_size=100&apikey=" + process.env.MUSIXMATCH_API_KEY }, function(error, response, body) { 
+      if (!error && response.statusCode == 200) { 
+        data = JSON.parse(body);
+        res.send( {data: data} );      
+      };
+  });
+});
+
 //POST to hit musixmatch API
 router.post('/titles', function(req, res, next) {
   console.log(req.body);

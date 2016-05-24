@@ -42,9 +42,7 @@
     </div>   
 
 
-
-    <script type="text/javascript">
-      
+    <script type="text/javascript">      
       var error = "<%= error %>"
 
       //FORM LOADING CODE
@@ -70,52 +68,41 @@
           $('#drop').empty();
           $('#loginModal img').remove();
           $('#artistSearch').val(search);
-          musixmatchAPIArtistSearch(search);  
-          console.log(search);
+          musixmatchAPIArtistSearch(search); 
           $('#drop').prepend("<option value=''>-- Select --</option>").fadeIn(500);
-
           $('#hiddenSearchField').remove();
-
           $('#trackSelectDiv').prepend("<input type='hidden' name='artistSearch' id='hiddenSearchField' value='" + search + "'>")
-                              
         }
         return false;
-      }
- 
+      };
+
+
     // calls the musixmatch API, returns all tracks by given artist
+    // I moved this to the server to protect my API key
     function musixmatchAPIArtistSearch(userInput){
-      console.log(userInput);
       $.ajax({
-        type: "GET",
+        type: "POST",
         data: {
-            apikey: '45f030feddac66fcfa2f9e9f659608c4',
-            page_size: 100,
-            // q_track:"back to december",
-            q_artist: userInput,
-            f_has_lyrics: 1, //only return results with lyrics
-            format:"jsonp",
-            callback:"jsonp_callback"
+          search: userInput
         },
-        url: "https://api.musixmatch.com/ws/1.1/track.search",
-        dataType: "jsonp",
-        jsonpCallback: 'jsonp_callback',
-        contentType: 'application/json',
+        url: "/apikey",
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(jqXHR);
             console.log(textStatus);
             console.log(errorThrown);
         },
         success: function(data) {
-          console.log(data.message.body.track_list);
-          artistImage = data.message.body.track_list[0].track.album_coverart_350x350 || (data.message.body.track_list[1].track.album_coverart_350x350 || data.message.body.track_list[1].track.album_coverart_100x100);
+          data = data.data.message.body;
+          console.log(data.track_list);
+          artistImage = data.track_list[0].track.album_coverart_350x350 || (data.track_list[1].track.album_coverart_350x350 || data.track_list[1].track.album_coverart_100x100);
 
-          artistImage800 = data.message.body.track_list[0].track.album_coverart_800x800 || artistImage;
+          artistImage800 = data.track_list[0].track.album_coverart_800x800 || artistImage;
 
-          console.log(data.message.body);
+          // console.log(data);
             
           $('#trackSelectDiv').fadeIn(300);
           artistTracksArray = [];
-          trackListArray = data.message.body.track_list;
+          trackListArray = data.track_list;
 
           trackListArray.forEach(function(track){            
             artistTracksArray.push(track.track.track_name);
@@ -130,10 +117,9 @@
 
           $('#trackSelectDiv').prepend("<input type='hidden' name='artistImage' value='" + artistImage800 + "'>");
         } 
-
-      }) //end of AJAX
-    } //end of musixmatchAPIArtistSearch function
-
+      });
+    };
+ 
     $('#jumbotron').fadeIn(500);
    
 
