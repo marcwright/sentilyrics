@@ -17,5 +17,5 @@ D3 Sentiment analysis on song lyrics
 - Add contextual sentiment analysis
 
 ## Issues
-- Contractions are split into two seperate words (e.g.- "I'll" => "I" + "ll"
+- Contractions are split into two seperate words (e.g.- "I'll" => "I" + "ll")
 - I need to account for "ahhs", "yeah", etc.

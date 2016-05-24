@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var Xray = require('x-ray');
 var browserify = require('browserify');
 var app = express();
+require('dotenv').config();
+// console.log(process.env.MUSIXMATCH_API_KEY);
 
 
 var music = require('./routes/music');
