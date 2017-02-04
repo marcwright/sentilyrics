@@ -13,7 +13,7 @@ body {
   position: absolute;
   margin-top: -5em;
   margin-left: -6em;
-  
+
   width: 110%;
   height: 130%;
   background-repeat: no-repeat;
@@ -31,7 +31,7 @@ body {
   position: absolute;
   margin-top: -5em;
   margin-left: -6em;
-  
+
   width: 110%;
   height: 130%;
   background-repeat: no-repeat;
@@ -60,7 +60,7 @@ legend {
 }
 #trackSelectDiv {
   border-bottom: 1em;
-  
+
 }
 .jumbotron {
   opacity: 1;
@@ -106,7 +106,7 @@ legend {
 .neg {
   /*color: red;*/
   border: 2px red solid;
-}  
+}
 a, a:visited {
   color:#333;
 }
@@ -121,7 +121,7 @@ a, a:visited {
   width: 1067px;
   border: 2px;
   background-color: white;
-  opacity: 0.95
+  /*opacity: 0.95*/
 
 }
 header {
@@ -198,11 +198,11 @@ output#jitter_output {
   pointer-events: all;
 }
 .bubble-node {
-   fill: #d1e0f3; 
+   fill: #d1e0f3;
   /*fill: #DCE9BE;*/
 }
 .bubble-new {
-   fill: red; 
+   fill: red;
   /*fill: #DCE9BE;*/
 }
 .bubble-hover {
@@ -212,7 +212,7 @@ output#jitter_output {
 .bubble-selected {
   /* fill: #a8c8ee;  */
   fill: #2780e3;
-  stroke: #6081a3; 
+  stroke: #6081a3;
   /*stroke: #A6BA92;*/
   stroke-width: 3px;
 }

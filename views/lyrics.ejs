@@ -4,22 +4,22 @@
   <body>
     <header><% include partials/header %></header>
 
-    <div id="beatles" class="col-lg-12 col-sm-12"></div> <!-- end of beatles div -->   
-    
+    <div id="beatles" class="col-lg-12 col-sm-12"></div> <!-- end of beatles div -->
+
     <!-- <div id="d3display" class="col-lg-12 col-sm-12"> -->
 
    <!--    <div>
         <h1><strong><%= artist.split("+").join(",").replace(/,/g, " ").toUpperCase(); %></strong> / <a href="<%= url %>" target="_blank"><span id="songTitle"><%= song.replace(/\+/g, " ").toUpperCase(); %></span></a></h1>
       </div> -->
 
-      <div id="container" class="container" style="display:none"> 
+      <div id="container" class="container" style="display:none">
        <div>
         <h1><strong><%= artist.split("+").join(",").replace(/,/g, " ").toUpperCase(); %></strong> / <a href="<%= url %>" target="_blank"><span id="songTitle"><%= song.replace(/\+/g, " ").toUpperCase(); %></span></a></h1>
-      </div> 
+      </div>
         <div id="main" role="main">
           <div id="vis"></div>
           <div id="status"></div>
-         
+
           <div class="panel panel-default panel-short">
             <div class="panel-heading">
               <h2 class="panel-title">Jitter</h2>
@@ -71,7 +71,7 @@
           </div>
 
           <div style="clear:both"></div>
-         
+
           <div class="panel panel-success">
             <div class="panel-heading">
               <h3 class="panel-title">Positive Senti Score: <strong><%= posScore %></strong></h3>
@@ -89,8 +89,8 @@
               <em class="text-danger" id="negWords"></em>
             </div>
           </div>
-  
-        </div>   
+
+        </div>
       </div> <!--! end of #container -->
  <!-- </div> -->
 
@@ -103,12 +103,13 @@
       var overallScore = "<%= overallScore %>"
       var url = "<%= url %>"
       var artistImage = "<%= artistImage %>"
+      console.log(url);
 
-      
 
-      $('#beatles').css('background-image', "url('" + artistImage + "')");
-    </script>   
-    
+
+      // $('#beatles').css('background-image', "url('" + artistImage + "')");
+    </script>
+
    <% include partials/footer %>
   </body>
 </html>

@@ -19,7 +19,7 @@ router.post('/apikey', function(req, res, next){
       if (!error && response.statusCode == 200) {
         data = JSON.parse(body);
         res.send( {data: data} );
-      };
+      }
   });
 });
 
@@ -33,8 +33,8 @@ router.post('/titles', function(req, res, next) {
       if (!error && response.statusCode == 200) {
         tracksArray = JSON.parse(body).message.body.track_list;
 
-        pic = tracksArray[0].track.album_coverart_100x100
-        artistPic = (pic == "https://s.mxmcdn.net/images/albums/nocover.png") ? tracksArray[1].track.album_coverart_100x100 : tracksArray[0].track.album_coverart_100x100
+        pic = tracksArray[0].track.album_coverart_100x100;
+        artistPic = (pic == "https://s.mxmcdn.net/images/albums/nocover.png") ? tracksArray[1].track.album_coverart_100x100 : tracksArray[0].track.album_coverart_100x100;
 
         titlesString = '';
 
@@ -73,13 +73,14 @@ router.post('/lyrics', function(req, res, next) {
   songArray = req.body.songSearch.split(' ');
   song = songArray.join('+');
   artistImage = req.body.artistImage;
+  console.log(req.body.artistImage);
 
   url = "https://www.songlyrics.com/" + artist + "/" + song + "-lyrics/"
 
   x(url, '#songLyricsDiv')(function(err, lyrics) {
 
     sentiResults = analyze(lyrics);
-    console.log(sentiResults.positive.words);
+    // console.log(sentiResults.positive.words);
     songLyricsArray = lyrics.replace("'", "").replace(/,/g, "").replace(/'/g, "").replace(/\W/g, ' ').split(' ');
 
 
