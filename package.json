@@ -1,7 +1,11 @@
 {
-  "name": "cars",
-  "version": "0.0.0",
+  "name": "sentilyrics",
+  "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
+  "main": "app.js",
   "scripts": {
     "start": "node ./bin/www"
   },
